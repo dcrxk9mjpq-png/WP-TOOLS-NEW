@@ -1,0 +1,12 @@
+.App {
+    min-height: 100vh;
+}
+
+@media print {
+    .wp-no-print {
+        display: none !important;
+    }
+    body {
+        background: #ffffff;
+    }
+}

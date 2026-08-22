@@ -1,0 +1,1604 @@
+[
+ {
+  "conceptKey": "routine.greeting_check_in",
+  "label": "Greeting and Check In",
+  "group": "Routine",
+  "file": "routine__greeting_check_in.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image8#0"
+ },
+ {
+  "conceptKey": "routine.expectations",
+  "label": "Expectations",
+  "group": "Routine",
+  "file": "routine__expectations.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image8#1"
+ },
+ {
+  "conceptKey": "routine.calendar",
+  "label": "Calendar",
+  "group": "Routine",
+  "file": "routine__calendar.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image8#2"
+ },
+ {
+  "conceptKey": "routine.weather",
+  "label": "Weather",
+  "group": "Routine",
+  "file": "routine__weather.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image8#3"
+ },
+ {
+  "conceptKey": "routine.timetable",
+  "label": "Timetable",
+  "group": "Routine",
+  "file": "routine__timetable.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image8#4"
+ },
+ {
+  "conceptKey": "routine.movement",
+  "label": "Movement",
+  "group": "Routine",
+  "file": "routine__movement.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image8#5"
+ },
+ {
+  "conceptKey": "routine.calming",
+  "label": "Calming",
+  "group": "Routine",
+  "file": "routine__calming.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image8#6"
+ },
+ {
+  "conceptKey": "sequence.now",
+  "label": "Now",
+  "group": "Sequence",
+  "file": "sequence__now.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image3#0"
+ },
+ {
+  "conceptKey": "sequence.next",
+  "label": "Next",
+  "group": "Sequence",
+  "file": "sequence__next.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image3#1"
+ },
+ {
+  "conceptKey": "sequence.finished",
+  "label": "Finished",
+  "group": "Sequence",
+  "file": "sequence__finished.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image1#0"
+ },
+ {
+  "conceptKey": "activity.crew_time",
+  "label": "CREW Time",
+  "group": "Activity",
+  "file": "activity__crew_time.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image3#2"
+ },
+ {
+  "conceptKey": "activity.phonics",
+  "label": "Phonics",
+  "group": "Activity",
+  "file": "activity__phonics.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image3#3"
+ },
+ {
+  "conceptKey": "regulation.zones",
+  "label": "Zones of Regulation",
+  "group": "Regulation",
+  "file": "regulation__zones.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image4#4"
+ },
+ {
+  "conceptKey": "regulation.people_annoy_me",
+  "label": "Sometimes people in the class annoy me",
+  "group": "Regulation",
+  "file": "regulation__people_annoy_me.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image5#3"
+ },
+ {
+  "conceptKey": "regulation.cannot_control_others",
+  "label": "I cannot control what other people do",
+  "group": "Regulation",
+  "file": "regulation__cannot_control_others.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image5#4"
+ },
+ {
+  "conceptKey": "regulation.can_control_myself",
+  "label": "I can control what I do",
+  "group": "Regulation",
+  "file": "regulation__can_control_myself.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image5#5"
+ },
+ {
+  "conceptKey": "regulation.need_space",
+  "label": "I can say \u201cI need space please\u201d",
+  "group": "Regulation",
+  "file": "regulation__need_space.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image5#6"
+ },
+ {
+  "conceptKey": "regulation.focus_on_myself",
+  "label": "I can focus on myself and let the teachers handle it",
+  "group": "Regulation",
+  "file": "regulation__focus_on_myself.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image5#7"
+ },
+ {
+  "conceptKey": "regulation.move_away_breathe",
+  "label": "I can move away and take deep breaths",
+  "group": "Regulation",
+  "file": "regulation__move_away_breathe.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image5#8"
+ },
+ {
+  "conceptKey": "expectations.be_kind",
+  "label": "Be Kind",
+  "group": "Expectations",
+  "file": "expectations__be_kind.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image13#1"
+ },
+ {
+  "conceptKey": "expectations.work_hard",
+  "label": "Work Hard",
+  "group": "Expectations",
+  "file": "expectations__work_hard.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image13#2"
+ },
+ {
+  "conceptKey": "expectations.be_responsible",
+  "label": "Be Responsible",
+  "group": "Expectations",
+  "file": "expectations__be_responsible.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image13#3"
+ },
+ {
+  "conceptKey": "expectations.say_kind_words",
+  "label": "Say kind words",
+  "group": "Expectations",
+  "file": "expectations__say_kind_words.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image7#1"
+ },
+ {
+  "conceptKey": "expectations.focus_on_yourself",
+  "label": "Focus on yourself",
+  "group": "Expectations",
+  "file": "expectations__focus_on_yourself.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image7#2"
+ },
+ {
+  "conceptKey": "expectations.inside_voice",
+  "label": "Use an inside voice",
+  "group": "Expectations",
+  "file": "expectations__inside_voice.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image7#3"
+ },
+ {
+  "conceptKey": "expectations.complete_tasks",
+  "label": "Complete the tasks",
+  "group": "Expectations",
+  "file": "expectations__complete_tasks.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image6#1"
+ },
+ {
+  "conceptKey": "expectations.listen_to_teachers",
+  "label": "Listen to the teachers",
+  "group": "Expectations",
+  "file": "expectations__listen_to_teachers.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image6#2"
+ },
+ {
+  "conceptKey": "expectations.try_your_best",
+  "label": "Try your best",
+  "group": "Expectations",
+  "file": "expectations__try_your_best.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image6#3"
+ },
+ {
+  "conceptKey": "expectations.stay_in_seat",
+  "label": "Stay in your seat",
+  "group": "Expectations",
+  "file": "expectations__stay_in_seat.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image11#1"
+ },
+ {
+  "conceptKey": "expectations.walk_inside",
+  "label": "Walk inside",
+  "group": "Expectations",
+  "file": "expectations__walk_inside.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image11#2"
+ },
+ {
+  "conceptKey": "expectations.raise_your_hand",
+  "label": "Raise your hand",
+  "group": "Expectations",
+  "file": "expectations__raise_your_hand.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image11#3"
+ },
+ {
+  "conceptKey": "day.monday",
+  "label": "Monday",
+  "group": "Calendar",
+  "file": "day__monday.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image19#0"
+ },
+ {
+  "conceptKey": "day.tuesday",
+  "label": "Tuesday",
+  "group": "Calendar",
+  "file": "day__tuesday.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image22#0"
+ },
+ {
+  "conceptKey": "day.wednesday",
+  "label": "Wednesday",
+  "group": "Calendar",
+  "file": "day__wednesday.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image12#0"
+ },
+ {
+  "conceptKey": "day.thursday",
+  "label": "Thursday",
+  "group": "Calendar",
+  "file": "day__thursday.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image16#0"
+ },
+ {
+  "conceptKey": "day.friday",
+  "label": "Friday",
+  "group": "Calendar",
+  "file": "day__friday.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image14#0"
+ },
+ {
+  "conceptKey": "day.saturday",
+  "label": "Saturday",
+  "group": "Calendar",
+  "file": "day__saturday.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image20#3"
+ },
+ {
+  "conceptKey": "day.sunday",
+  "label": "Sunday",
+  "group": "Calendar",
+  "file": "day__sunday.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image20#4"
+ },
+ {
+  "conceptKey": "month.january",
+  "label": "January",
+  "group": "Calendar",
+  "file": "month__january.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image23#0"
+ },
+ {
+  "conceptKey": "month.february",
+  "label": "February",
+  "group": "Calendar",
+  "file": "month__february.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image28#0"
+ },
+ {
+  "conceptKey": "month.march",
+  "label": "March",
+  "group": "Calendar",
+  "file": "month__march.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image21#0"
+ },
+ {
+  "conceptKey": "month.april",
+  "label": "April",
+  "group": "Calendar",
+  "file": "month__april.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image35#0"
+ },
+ {
+  "conceptKey": "month.may",
+  "label": "May",
+  "group": "Calendar",
+  "file": "month__may.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image33#0"
+ },
+ {
+  "conceptKey": "month.june",
+  "label": "June",
+  "group": "Calendar",
+  "file": "month__june.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image27#0"
+ },
+ {
+  "conceptKey": "month.july",
+  "label": "July",
+  "group": "Calendar",
+  "file": "month__july.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image30#0"
+ },
+ {
+  "conceptKey": "month.august",
+  "label": "August",
+  "group": "Calendar",
+  "file": "month__august.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image31#0"
+ },
+ {
+  "conceptKey": "month.september",
+  "label": "September",
+  "group": "Calendar",
+  "file": "month__september.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image26#0"
+ },
+ {
+  "conceptKey": "month.october",
+  "label": "October",
+  "group": "Calendar",
+  "file": "month__october.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image34#0"
+ },
+ {
+  "conceptKey": "month.november",
+  "label": "November",
+  "group": "Calendar",
+  "file": "month__november.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image24#0"
+ },
+ {
+  "conceptKey": "month.december",
+  "label": "December",
+  "group": "Calendar",
+  "file": "month__december.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image25#0"
+ },
+ {
+  "conceptKey": "calendar.day",
+  "label": "Day",
+  "group": "Calendar",
+  "file": "calendar__day.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image29#0"
+ },
+ {
+  "conceptKey": "calendar.date",
+  "label": "Date",
+  "group": "Calendar",
+  "file": "calendar__date.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image29#1"
+ },
+ {
+  "conceptKey": "calendar.month",
+  "label": "Month",
+  "group": "Calendar",
+  "file": "calendar__month.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image29#2"
+ },
+ {
+  "conceptKey": "calendar.year",
+  "label": "Year",
+  "group": "Calendar",
+  "file": "calendar__year.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image29#3"
+ },
+ {
+  "conceptKey": "calendar.today",
+  "label": "Today",
+  "group": "Calendar",
+  "file": "calendar__today.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image18#0"
+ },
+ {
+  "conceptKey": "weather.prompt",
+  "label": "How\u2019s the weather today?",
+  "group": "Weather",
+  "file": "weather__prompt.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#5"
+ },
+ {
+  "conceptKey": "weather.sunny",
+  "label": "Sunny",
+  "group": "Weather",
+  "file": "weather__sunny.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#0"
+ },
+ {
+  "conceptKey": "weather.cloudy",
+  "label": "Cloudy",
+  "group": "Weather",
+  "file": "weather__cloudy.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#1"
+ },
+ {
+  "conceptKey": "weather.rainy",
+  "label": "Rainy",
+  "group": "Weather",
+  "file": "weather__rainy.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#2"
+ },
+ {
+  "conceptKey": "weather.snowy",
+  "label": "Snowy",
+  "group": "Weather",
+  "file": "weather__snowy.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#3"
+ },
+ {
+  "conceptKey": "weather.clear",
+  "label": "Clear",
+  "group": "Weather",
+  "file": "weather__clear.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#4"
+ },
+ {
+  "conceptKey": "weather.hot",
+  "label": "Hot",
+  "group": "Weather",
+  "file": "weather__hot.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#6"
+ },
+ {
+  "conceptKey": "weather.warm",
+  "label": "Warm",
+  "group": "Weather",
+  "file": "weather__warm.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#7"
+ },
+ {
+  "conceptKey": "weather.chilly",
+  "label": "Chilly",
+  "group": "Weather",
+  "file": "weather__chilly.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#8"
+ },
+ {
+  "conceptKey": "weather.cold",
+  "label": "Cold",
+  "group": "Weather",
+  "file": "weather__cold.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#9"
+ },
+ {
+  "conceptKey": "weather.freezing",
+  "label": "Freezing",
+  "group": "Weather",
+  "file": "weather__freezing.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image40#10"
+ },
+ {
+  "conceptKey": "sign.good_morning",
+  "label": "Good morning (sign)",
+  "group": "Greeting",
+  "file": "sign__good_morning.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image44#0"
+ },
+ {
+  "conceptKey": "resource.good_morning_song",
+  "label": "Good Morning song",
+  "group": "Resource",
+  "file": "resource__good_morning_song.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image2#0"
+ },
+ {
+  "conceptKey": "resource.brain_break",
+  "label": "Brain break video",
+  "group": "Resource",
+  "file": "resource__brain_break.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image43#0"
+ },
+ {
+  "conceptKey": "resource.calming_breaks",
+  "label": "Calming breaks",
+  "group": "Resource",
+  "file": "resource__calming_breaks.png",
+  "source": "widgit-deck",
+  "attribution": "Widgit Symbols \u00a9 Widgit Software \u2014 extracted from the school\u2019s own Morning Meeting resource",
+  "sourceRef": "image45#0"
+ },
+ {
+  "conceptKey": "comm.communication",
+  "label": "Communication",
+  "group": "Communication",
+  "file": "comm__communication.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:27685"
+ },
+ {
+  "conceptKey": "comm.help",
+  "label": "Help",
+  "group": "Communication",
+  "file": "comm__help.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:4570"
+ },
+ {
+  "conceptKey": "comm.i_want",
+  "label": "I want",
+  "group": "Communication",
+  "file": "comm__i_want.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:5441"
+ },
+ {
+  "conceptKey": "comm.i_need",
+  "label": "I need",
+  "group": "Communication",
+  "file": "comm__i_need.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:37160"
+ },
+ {
+  "conceptKey": "comm.i_feel",
+  "label": "I feel",
+  "group": "Communication",
+  "file": "comm__i_feel.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3293"
+ },
+ {
+  "conceptKey": "comm.i_think",
+  "label": "I think",
+  "group": "Communication",
+  "file": "comm__i_think.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:8662"
+ },
+ {
+  "conceptKey": "comm.i_can_say",
+  "label": "I can say",
+  "group": "Communication",
+  "file": "comm__i_can_say.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:27465"
+ },
+ {
+  "conceptKey": "comm.yes",
+  "label": "Yes",
+  "group": "Communication",
+  "file": "comm__yes.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:5583"
+ },
+ {
+  "conceptKey": "comm.no",
+  "label": "No",
+  "group": "Communication",
+  "file": "comm__no.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:5525"
+ },
+ {
+  "conceptKey": "comm.more",
+  "label": "More",
+  "group": "Communication",
+  "file": "comm__more.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:5508"
+ },
+ {
+  "conceptKey": "comm.stop",
+  "label": "Stop",
+  "group": "Communication",
+  "file": "comm__stop.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7195"
+ },
+ {
+  "conceptKey": "comm.wait",
+  "label": "Wait",
+  "group": "Communication",
+  "file": "comm__wait.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:8109"
+ },
+ {
+  "conceptKey": "comm.listen",
+  "label": "Listen",
+  "group": "Communication",
+  "file": "comm__listen.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2381"
+ },
+ {
+  "conceptKey": "comm.question",
+  "label": "Question",
+  "group": "Communication",
+  "file": "comm__question.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9844"
+ },
+ {
+  "conceptKey": "comm.choice",
+  "label": "Choice",
+  "group": "Communication",
+  "file": "comm__choice.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:6483"
+ },
+ {
+  "conceptKey": "comm.toilet",
+  "label": "Toilet",
+  "group": "Communication",
+  "file": "comm__toilet.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2430"
+ },
+ {
+  "conceptKey": "comm.drink",
+  "label": "Drink",
+  "group": "Communication",
+  "file": "comm__drink.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2276"
+ },
+ {
+  "conceptKey": "comm.snack",
+  "label": "Snack",
+  "group": "Communication",
+  "file": "comm__snack.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:4694"
+ },
+ {
+  "conceptKey": "comm.break",
+  "label": "Break",
+  "group": "Communication",
+  "file": "comm__break.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:21377"
+ },
+ {
+  "conceptKey": "comm.home",
+  "label": "Home",
+  "group": "Communication",
+  "file": "comm__home.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9861"
+ },
+ {
+  "conceptKey": "comm.hello",
+  "label": "Hello",
+  "group": "Greeting",
+  "file": "comm__hello.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:6009"
+ },
+ {
+  "conceptKey": "comm.goodbye",
+  "label": "Goodbye",
+  "group": "Greeting",
+  "file": "comm__goodbye.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:5896"
+ },
+ {
+  "conceptKey": "comm.my_name",
+  "label": "My name is",
+  "group": "Greeting",
+  "file": "comm__my_name.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:27357"
+ },
+ {
+  "conceptKey": "feeling.happy",
+  "label": "Happy",
+  "group": "Feelings",
+  "file": "feeling__happy.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3245"
+ },
+ {
+  "conceptKey": "feeling.sad",
+  "label": "Sad",
+  "group": "Feelings",
+  "file": "feeling__sad.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2606"
+ },
+ {
+  "conceptKey": "feeling.angry",
+  "label": "Angry",
+  "group": "Feelings",
+  "file": "feeling__angry.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2374"
+ },
+ {
+  "conceptKey": "feeling.worried",
+  "label": "Worried",
+  "group": "Feelings",
+  "file": "feeling__worried.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:26985"
+ },
+ {
+  "conceptKey": "feeling.tired",
+  "label": "Tired",
+  "group": "Feelings",
+  "file": "feeling__tired.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2314"
+ },
+ {
+  "conceptKey": "feeling.excited",
+  "label": "Excited",
+  "group": "Feelings",
+  "file": "feeling__excited.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:39090"
+ },
+ {
+  "conceptKey": "feeling.calm",
+  "label": "Calm",
+  "group": "Feelings",
+  "file": "feeling__calm.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:37828"
+ },
+ {
+  "conceptKey": "feeling.scared",
+  "label": "Scared",
+  "group": "Feelings",
+  "file": "feeling__scared.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2261"
+ },
+ {
+  "conceptKey": "feeling.poorly",
+  "label": "Poorly",
+  "group": "Feelings",
+  "file": "feeling__poorly.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3308"
+ },
+ {
+  "conceptKey": "regulation.deep_breaths",
+  "label": "Deep breaths",
+  "group": "Regulation",
+  "file": "regulation__deep_breaths.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:34409"
+ },
+ {
+  "conceptKey": "regulation.quiet_space",
+  "label": "Quiet space",
+  "group": "Regulation",
+  "file": "regulation__quiet_space.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7266"
+ },
+ {
+  "conceptKey": "regulation.headphones",
+  "label": "Ear defenders",
+  "group": "Regulation",
+  "file": "regulation__headphones.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:5915"
+ },
+ {
+  "conceptKey": "regulation.fidget",
+  "label": "Fidget toy",
+  "group": "Regulation",
+  "file": "regulation__fidget.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9813"
+ },
+ {
+  "conceptKey": "regulation.sensory",
+  "label": "Sensory",
+  "group": "Regulation",
+  "file": "regulation__sensory.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3293"
+ },
+ {
+  "conceptKey": "regulation.water",
+  "label": "Water",
+  "group": "Regulation",
+  "file": "regulation__water.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2816"
+ },
+ {
+  "conceptKey": "regulation.walk",
+  "label": "Walk",
+  "group": "Regulation",
+  "file": "regulation__walk.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3251"
+ },
+ {
+  "conceptKey": "regulation.adult_help",
+  "label": "Ask an adult",
+  "group": "Regulation",
+  "file": "regulation__adult_help.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:28003"
+ },
+ {
+  "conceptKey": "regulation.count",
+  "label": "Count to ten",
+  "group": "Regulation",
+  "file": "regulation__count.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2714"
+ },
+ {
+  "conceptKey": "regulation.squeeze",
+  "label": "Squeeze",
+  "group": "Regulation",
+  "file": "regulation__squeeze.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7222"
+ },
+ {
+  "conceptKey": "learning.learning",
+  "label": "Learning",
+  "group": "Learning",
+  "file": "learning__learning.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:8029"
+ },
+ {
+  "conceptKey": "learning.reading",
+  "label": "Reading",
+  "group": "Learning",
+  "file": "learning__reading.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:28643"
+ },
+ {
+  "conceptKey": "learning.writing",
+  "label": "Writing",
+  "group": "Learning",
+  "file": "learning__writing.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2380"
+ },
+ {
+  "conceptKey": "learning.maths",
+  "label": "Maths",
+  "group": "Learning",
+  "file": "learning__maths.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:10260"
+ },
+ {
+  "conceptKey": "learning.science",
+  "label": "Science",
+  "group": "Learning",
+  "file": "learning__science.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:35437"
+ },
+ {
+  "conceptKey": "learning.art",
+  "label": "Art",
+  "group": "Learning",
+  "file": "learning__art.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2836"
+ },
+ {
+  "conceptKey": "learning.music",
+  "label": "Music",
+  "group": "Learning",
+  "file": "learning__music.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:24791"
+ },
+ {
+  "conceptKey": "learning.computing",
+  "label": "Computing",
+  "group": "Learning",
+  "file": "learning__computing.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2487"
+ },
+ {
+  "conceptKey": "learning.pe",
+  "label": "PE",
+  "group": "Learning",
+  "file": "learning__pe.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3106"
+ },
+ {
+  "conceptKey": "learning.swimming",
+  "label": "Swimming",
+  "group": "Learning",
+  "file": "learning__swimming.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:31460"
+ },
+ {
+  "conceptKey": "learning.library",
+  "label": "Library",
+  "group": "Learning",
+  "file": "learning__library.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3065"
+ },
+ {
+  "conceptKey": "learning.cooking",
+  "label": "Cooking",
+  "group": "Learning",
+  "file": "learning__cooking.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3235"
+ },
+ {
+  "conceptKey": "learning.gardening",
+  "label": "Gardening",
+  "group": "Learning",
+  "file": "learning__gardening.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2434"
+ },
+ {
+  "conceptKey": "school.lunch",
+  "label": "Lunch",
+  "group": "School day",
+  "file": "school__lunch.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:4609"
+ },
+ {
+  "conceptKey": "school.playtime",
+  "label": "Playtime",
+  "group": "School day",
+  "file": "school__playtime.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:33064"
+ },
+ {
+  "conceptKey": "school.assembly",
+  "label": "Assembly",
+  "group": "School day",
+  "file": "school__assembly.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:32934"
+ },
+ {
+  "conceptKey": "school.register",
+  "label": "Register",
+  "group": "School day",
+  "file": "school__register.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7144"
+ },
+ {
+  "conceptKey": "school.tidy_up",
+  "label": "Tidy up",
+  "group": "School day",
+  "file": "school__tidy_up.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:17298"
+ },
+ {
+  "conceptKey": "school.line_up",
+  "label": "Line up",
+  "group": "School day",
+  "file": "school__line_up.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7102"
+ },
+ {
+  "conceptKey": "school.school",
+  "label": "School",
+  "group": "School day",
+  "file": "school__school.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3082"
+ },
+ {
+  "conceptKey": "school.bus",
+  "label": "Bus",
+  "group": "School day",
+  "file": "school__bus.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2263"
+ },
+ {
+  "conceptKey": "school.trip",
+  "label": "Trip",
+  "group": "School day",
+  "file": "school__trip.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:4670"
+ },
+ {
+  "conceptKey": "school.visitor",
+  "label": "Visitor",
+  "group": "School day",
+  "file": "school__visitor.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:4772"
+ },
+ {
+  "conceptKey": "school.new_adult",
+  "label": "New adult",
+  "group": "School day",
+  "file": "school__new_adult.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:6886"
+ },
+ {
+  "conceptKey": "school.classroom",
+  "label": "Classroom",
+  "group": "School day",
+  "file": "school__classroom.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9814"
+ },
+ {
+  "conceptKey": "interaction.interaction",
+  "label": "Interaction",
+  "group": "Interaction",
+  "file": "interaction__interaction.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2255"
+ },
+ {
+  "conceptKey": "interaction.turn_taking",
+  "label": "Turn taking",
+  "group": "Interaction",
+  "file": "interaction__turn_taking.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9889"
+ },
+ {
+  "conceptKey": "interaction.sharing",
+  "label": "Sharing",
+  "group": "Interaction",
+  "file": "interaction__sharing.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:15361"
+ },
+ {
+  "conceptKey": "interaction.joint_attention",
+  "label": "Joint attention",
+  "group": "Interaction",
+  "file": "interaction__joint_attention.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:21466"
+ },
+ {
+  "conceptKey": "interaction.conversation",
+  "label": "Conversation",
+  "group": "Interaction",
+  "file": "interaction__conversation.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:23402"
+ },
+ {
+  "conceptKey": "interaction.asking",
+  "label": "Asking questions",
+  "group": "Interaction",
+  "file": "interaction__asking.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9844"
+ },
+ {
+  "conceptKey": "interaction.answering",
+  "label": "Answering",
+  "group": "Interaction",
+  "file": "interaction__answering.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:28433"
+ },
+ {
+  "conceptKey": "interaction.commenting",
+  "label": "Commenting",
+  "group": "Interaction",
+  "file": "interaction__commenting.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9692"
+ },
+ {
+  "conceptKey": "interaction.peer",
+  "label": "Playing with a friend",
+  "group": "Interaction",
+  "file": "interaction__peer.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2439"
+ },
+ {
+  "conceptKey": "interaction.problem_solving",
+  "label": "Problem solving",
+  "group": "Interaction",
+  "file": "interaction__problem_solving.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:37711"
+ },
+ {
+  "conceptKey": "interaction.perspective",
+  "label": "How others feel",
+  "group": "Interaction",
+  "file": "interaction__perspective.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:37232"
+ },
+ {
+  "conceptKey": "job.job",
+  "label": "Classroom job",
+  "group": "Jobs",
+  "file": "job__job.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2599"
+ },
+ {
+  "conceptKey": "job.helper",
+  "label": "Helper",
+  "group": "Jobs",
+  "file": "job__helper.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2476"
+ },
+ {
+  "conceptKey": "job.tidy",
+  "label": "Tidy helper",
+  "group": "Jobs",
+  "file": "job__tidy.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3351"
+ },
+ {
+  "conceptKey": "job.door",
+  "label": "Door helper",
+  "group": "Jobs",
+  "file": "job__door.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3244"
+ },
+ {
+  "conceptKey": "job.plants",
+  "label": "Plant helper",
+  "group": "Jobs",
+  "file": "job__plants.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3143"
+ },
+ {
+  "conceptKey": "job.register_helper",
+  "label": "Register helper",
+  "group": "Jobs",
+  "file": "job__register_helper.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7142"
+ },
+ {
+  "conceptKey": "job.snack_helper",
+  "label": "Snack helper",
+  "group": "Jobs",
+  "file": "job__snack_helper.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:28339"
+ },
+ {
+  "conceptKey": "job.line_leader",
+  "label": "Line leader",
+  "group": "Jobs",
+  "file": "job__line_leader.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:38642"
+ },
+ {
+  "conceptKey": "job.messenger",
+  "label": "Messenger",
+  "group": "Jobs",
+  "file": "job__messenger.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:6963"
+ },
+ {
+  "conceptKey": "job.librarian",
+  "label": "Book helper",
+  "group": "Jobs",
+  "file": "job__librarian.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:25191"
+ },
+ {
+  "conceptKey": "system.today",
+  "label": "Today",
+  "group": "System",
+  "file": "system__today.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7131"
+ },
+ {
+  "conceptKey": "system.pupil",
+  "label": "Pupil",
+  "group": "System",
+  "file": "system__pupil.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7176"
+ },
+ {
+  "conceptKey": "system.staff",
+  "label": "Staff",
+  "group": "System",
+  "file": "system__staff.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:28003"
+ },
+ {
+  "conceptKey": "system.group",
+  "label": "Group",
+  "group": "System",
+  "file": "system__group.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:7116"
+ },
+ {
+  "conceptKey": "system.settings",
+  "label": "Settings",
+  "group": "System",
+  "file": "system__settings.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9883"
+ },
+ {
+  "conceptKey": "system.observation",
+  "label": "Observation",
+  "group": "System",
+  "file": "system__observation.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2474"
+ },
+ {
+  "conceptKey": "system.progress",
+  "label": "Progress",
+  "group": "System",
+  "file": "system__progress.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:9174"
+ },
+ {
+  "conceptKey": "system.target",
+  "label": "Target",
+  "group": "System",
+  "file": "system__target.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:11236"
+ },
+ {
+  "conceptKey": "system.independence",
+  "label": "Independence",
+  "group": "System",
+  "file": "system__independence.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:36347"
+ },
+ {
+  "conceptKey": "system.engagement",
+  "label": "Engagement",
+  "group": "System",
+  "file": "system__engagement.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:24863"
+ },
+ {
+  "conceptKey": "system.spark",
+  "label": "Spark",
+  "group": "System",
+  "file": "system__spark.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2752"
+ },
+ {
+  "conceptKey": "system.badge",
+  "label": "Badge",
+  "group": "System",
+  "file": "system__badge.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:3128"
+ },
+ {
+  "conceptKey": "system.project",
+  "label": "Project",
+  "group": "System",
+  "file": "system__project.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:8201"
+ },
+ {
+  "conceptKey": "system.picker",
+  "label": "Random picker",
+  "group": "System",
+  "file": "system__picker.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2731"
+ },
+ {
+  "conceptKey": "system.prepare_me",
+  "label": "Prepare me",
+  "group": "System",
+  "file": "system__prepare_me.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:8579"
+ },
+ {
+  "conceptKey": "system.timer",
+  "label": "Timer",
+  "group": "System",
+  "file": "system__timer.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:5561"
+ },
+ {
+  "conceptKey": "system.photo",
+  "label": "Photograph",
+  "group": "System",
+  "file": "system__photo.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:28341"
+ },
+ {
+  "conceptKey": "system.symbol",
+  "label": "Symbol",
+  "group": "System",
+  "file": "system__symbol.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:2360"
+ },
+ {
+  "conceptKey": "system.later",
+  "label": "Later",
+  "group": "Sequence",
+  "file": "system__later.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:13080"
+ },
+ {
+  "conceptKey": "system.first_then",
+  "label": "First / then",
+  "group": "Sequence",
+  "file": "system__first_then.png",
+  "source": "arasaac",
+  "attribution": "ARASAAC pictograms \u2014 author Sergio Palao, origin ARASAAC (https://arasaac.org), licence CC BY-NC-SA",
+  "sourceRef": "arasaac:13028"
+ }
+]
