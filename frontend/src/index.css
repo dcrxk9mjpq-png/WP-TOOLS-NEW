@@ -141,12 +141,18 @@
         background-color: #ffffff;
         border: 1px solid hsl(var(--border));
         box-shadow: var(--wp-shadow-sm);
+        transition: box-shadow 150ms ease-out, border-color 150ms ease-out;
+    }
+
+    .wp-card:hover {
+        box-shadow: var(--wp-shadow-md);
     }
 
     .wp-row {
         border-radius: var(--wp-radius-xl);
         background-color: #ffffff;
         border: 1px solid hsl(var(--border));
+        transition: box-shadow 150ms ease-out, border-color 150ms ease-out;
     }
 
     .wp-pad {
@@ -192,6 +198,44 @@
     .wp-scroll-x::-webkit-scrollbar-thumb {
         background: hsl(var(--border));
         border-radius: 999px;
+    }
+
+    /* Button refinement */
+    .btn-primary {
+        @apply bg-[hsl(var(--wp-teal))] text-white hover:bg-[hsl(var(--wp-teal-600))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--wp-focus))] focus-visible:ring-offset-2;
+        transition: background-color 150ms ease-out, box-shadow 150ms ease-out, transform 100ms ease-out;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08);
+    }
+
+    .btn-primary:active:not(:disabled) {
+        transform: scale(0.98);
+    }
+
+    .btn-secondary {
+        @apply bg-white border border-[hsl(var(--border))] text-[hsl(var(--wp-ink))] hover:bg-[hsl(var(--wp-tint-mint))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--wp-focus))] focus-visible:ring-offset-2;
+        transition: background-color 150ms ease-out, border-color 150ms ease-out;
+    }
+
+    /* Input refinement */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select,
+    textarea {
+        @apply border border-[hsl(var(--border))] rounded-[var(--wp-radius-lg)] px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--wp-focus))] focus:ring-offset-2;
+        transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+    }
+
+    input[type="text"]:disabled,
+    input[type="email"]:disabled,
+    input[type="password"]:disabled,
+    select:disabled,
+    textarea:disabled {
+        @apply bg-[hsl(var(--muted))] opacity-60 cursor-not-allowed;
     }
 }
 
