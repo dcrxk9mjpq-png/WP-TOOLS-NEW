@@ -20,6 +20,7 @@ import {
   Users,
   Wand2,
   Lightbulb,
+  ChevronRight,
 } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -125,7 +126,7 @@ export const NAV = [
 const MOBILE_PRIMARY = ["/", "/timetable", "/communication", "/pupils"];
 
 const Brand = ({ compact = false }) => (
-  <Link to="/" className="flex items-center gap-3" data-testid="brand-link">
+  <Link to="/" className="flex items-center gap-3 transition-opacity duration-200 hover:opacity-80" data-testid="brand-link">
     <span className="flex h-10 w-10 items-center justify-center rounded-[var(--wp-radius-md)] bg-white/10">
       <Mascot className="h-8 w-8" />
     </span>
@@ -154,10 +155,10 @@ const NavList = ({ onNavigate }) => {
   );
 
   return (
-    <nav className="flex flex-col gap-5" aria-label="Main">
+    <nav className="flex flex-col gap-6" aria-label="Main navigation">
       {groups.map((group) => (
         <div key={group.group}>
-          <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">
+          <p className="px-3 pb-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">
             {group.group}
           </p>
           <ul className="space-y-1">
@@ -170,12 +171,13 @@ const NavList = ({ onNavigate }) => {
                   data-testid={`nav-${item.label.toLowerCase().replace(/[^a-z]+/g, "-")}`}
                   className={({ isActive }) =>
                     cn(
-                      "flex min-h-[40px] items-center gap-3 rounded-[var(--wp-radius-md)] px-3 py-2 text-sm font-medium transition-colors duration-200",
+                      "flex min-h-[44px] items-center gap-3 rounded-[var(--wp-radius-md)] px-3 py-2.5 text-sm font-medium transition-[background-color,color,box-shadow] duration-200",
                       isActive
-                        ? "bg-white text-[hsl(var(--wp-aubergine))]"
-                        : "text-white/80 hover:bg-white/10 hover:text-white"
+                        ? "bg-white text-[hsl(var(--wp-aubergine))] shadow-[var(--wp-shadow-sm)]"
+                        : "text-white/75 hover:bg-white/10 hover:text-white"
                     )
                   }
+                  aria-current={({ isActive }) => (isActive ? "page" : undefined)}
                 >
                   <item.icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
                   <span className="truncate">{item.label}</span>
@@ -202,21 +204,24 @@ export const StaffShell = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-[hsl(var(--wp-surface-cream))]">
-      {/* desktop sidebar */}
+      {/* Desktop sidebar */}
       <aside
-        className="fixed inset-y-0 left-0 z-30 hidden w-[248px] flex-col overflow-y-auto bg-[hsl(var(--wp-aubergine))] px-4 py-5 lg:flex"
+        className="fixed inset-y-0 left-0 z-30 hidden w-[264px] flex-col overflow-y-auto bg-[hsl(var(--wp-aubergine))] px-4 py-5 shadow-[var(--wp-shadow-md)] lg:flex"
         data-testid="sidebar"
+        role="complementary"
+        aria-label="Navigation"
       >
-        <div className="mb-6 px-1">
+        <div className="mb-8 px-1">
           <Brand />
         </div>
         <NavList />
-        <div className="mt-auto pt-6">
+        <div className="mt-auto space-y-3 border-t border-white/10 pt-6">
           <button
             type="button"
             onClick={() => togglePupilMode(true)}
-            className="flex w-full items-center gap-3 rounded-[var(--wp-radius-md)] bg-white/10 px-3 py-2.5 text-left text-sm font-medium text-white transition-colors duration-200 hover:bg-white/20"
+            className="flex w-full items-center gap-3 rounded-[var(--wp-radius-md)] bg-white/10 px-3 py-2.5 text-left text-sm font-medium text-white transition-[background-color,box-shadow] duration-200 hover:bg-white/[0.15] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--wp-aubergine))]"
             data-testid="start-pupil-mode"
+            aria-label="Switch to pupil-facing mode"
           >
             <Monitor className="h-[18px] w-[18px]" aria-hidden="true" />
             Pupil-facing mode
@@ -224,17 +229,18 @@ export const StaffShell = ({ children }) => {
         </div>
       </aside>
 
-      <div className="lg:pl-[248px]">
-        {/* header */}
-        <header className="sticky top-0 z-20 border-b border-[hsl(var(--border))] bg-[hsl(var(--wp-surface-cream))]/95 backdrop-blur">
+      <div className="lg:pl-[264px]">
+        {/* Header */}
+        <header className="sticky top-0 z-20 border-b border-[hsl(var(--border))] bg-[hsl(var(--wp-surface-cream))]/95 backdrop-blur supports-[backdrop-filter]:bg-[hsl(var(--wp-surface-cream))]/80">
           <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
+            {/* Mobile menu */}
             <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="outline"
                   size="icon"
                   className="lg:hidden"
-                  aria-label="Open menu"
+                  aria-label="Open navigation menu"
                   data-testid="open-menu"
                 >
                   <Menu className="h-5 w-5" />
@@ -245,7 +251,7 @@ export const StaffShell = ({ children }) => {
                 className="w-[280px] overflow-y-auto border-none bg-[hsl(var(--wp-aubergine))] p-5"
                 data-testid="mobile-menu"
               >
-                <SheetHeader className="mb-5 text-left">
+                <SheetHeader className="mb-6 text-left">
                   <SheetTitle className="text-white">
                     <Brand />
                   </SheetTitle>
@@ -254,6 +260,7 @@ export const StaffShell = ({ children }) => {
               </SheetContent>
             </Sheet>
 
+            {/* Date and role */}
             <div className="min-w-0 flex-1">
               <p className="truncate text-xs font-medium text-[hsl(var(--wp-ink-muted))]">
                 {formatLongDate(today)}
@@ -263,20 +270,33 @@ export const StaffShell = ({ children }) => {
               </p>
             </div>
 
+            {/* Quick observation button */}
             {can("observation.create") ? (
-              <Button onClick={() => setObsOpen(true)} className="gap-2" data-testid="header-add-observation">
+              <Button
+                onClick={() => setObsOpen(true)}
+                className="gap-2"
+                data-testid="header-add-observation"
+                aria-label="Record a quick observation"
+              >
                 <Plus className="h-4 w-4" aria-hidden="true" />
                 <span className="hidden sm:inline">Observation</span>
               </Button>
             ) : null}
 
+            {/* User menu */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="gap-2" data-testid="user-menu">
+                <Button
+                  variant="outline"
+                  className="gap-2"
+                  data-testid="user-menu"
+                  aria-label={`User menu for ${user?.name}`}
+                >
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[hsl(var(--wp-teal-100))] text-[11px] font-bold text-[hsl(var(--wp-teal-600))]">
                     {(user?.name || "?").slice(0, 1)}
                   </span>
                   <span className="hidden max-w-[120px] truncate sm:inline">{user?.name}</span>
+                  <ChevronRight className="h-4 w-4 sm:hidden" aria-hidden="true" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
@@ -285,10 +305,14 @@ export const StaffShell = ({ children }) => {
                   <p className="text-xs text-[hsl(var(--wp-ink-muted))]">{user?.email}</p>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => togglePupilMode(true)} data-testid="menu-pupil-mode">
+                <DropdownMenuItem
+                  onClick={() => togglePupilMode(true)}
+                  data-testid="menu-pupil-mode"
+                  className="cursor-pointer"
+                >
                   <Monitor className="mr-2 h-4 w-4" /> Pupil-facing mode
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={signOut} data-testid="sign-out">
+                <DropdownMenuItem onClick={signOut} data-testid="sign-out" className="cursor-pointer text-red-600">
                   <LogOut className="mr-2 h-4 w-4" /> Sign out
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -296,20 +320,22 @@ export const StaffShell = ({ children }) => {
           </div>
         </header>
 
+        {/* Main content */}
         <main
           key={location.pathname}
-          className="mx-auto max-w-[1400px] px-4 pb-28 pt-6 sm:px-6 lg:px-8 lg:pb-10"
+          className="mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8 lg:pb-10"
         >
           {children}
         </main>
       </div>
 
-      {/* mobile bottom tabs */}
-      <div
-        className="fixed inset-x-0 bottom-0 z-30 border-t border-[hsl(var(--border))] bg-white/95 backdrop-blur lg:hidden"
+      {/* Mobile bottom navigation */}
+      <nav
+        className="fixed inset-x-0 bottom-0 z-30 border-t border-[hsl(var(--border))] bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 lg:hidden"
         data-testid="bottom-tabs"
+        aria-label="Mobile navigation"
       >
-        <div className="flex items-stretch justify-around px-1 py-1.5">
+        <div className="flex items-stretch justify-around px-0.5 py-1">
           {mobileItems.map((item) => (
             <NavLink
               key={item.to}
@@ -317,11 +343,14 @@ export const StaffShell = ({ children }) => {
               end={item.to === "/"}
               className={({ isActive }) =>
                 cn(
-                  "flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-[var(--wp-radius-md)] px-1 text-[10px] font-medium",
-                  isActive ? "text-[hsl(var(--wp-teal))]" : "text-[hsl(var(--wp-ink-muted))]"
+                  "flex min-h-[56px] flex-1 flex-col items-center justify-center gap-0.5 rounded-[var(--wp-radius-md)] px-1 text-[10px] font-medium transition-[color,background-color] duration-200",
+                  isActive
+                    ? "text-[hsl(var(--wp-teal))]"
+                    : "text-[hsl(var(--wp-ink-muted))] hover:text-[hsl(var(--wp-ink))]"
                 )
               }
               data-testid={`tab-${item.label.toLowerCase().replace(/[^a-z]+/g, "-")}`}
+              aria-current={({ isActive }) => (isActive ? "page" : undefined)}
             >
               <item.icon className="h-5 w-5" aria-hidden="true" />
               <span className="truncate">{item.label}</span>
@@ -330,14 +359,15 @@ export const StaffShell = ({ children }) => {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-medium text-[hsl(var(--wp-ink-muted))]"
+            className="flex min-h-[56px] flex-1 flex-col items-center justify-center gap-0.5 rounded-[var(--wp-radius-md)] px-1 text-[10px] font-medium text-[hsl(var(--wp-ink-muted))] transition-[color] duration-200 hover:text-[hsl(var(--wp-ink))]"
             data-testid="tab-more"
+            aria-label="Open full navigation menu"
           >
             <Menu className="h-5 w-5" aria-hidden="true" />
             More
           </button>
         </div>
-      </div>
+      </nav>
 
       <QuickObservationSheet open={obsOpen} onOpenChange={setObsOpen} />
     </div>
