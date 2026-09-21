@@ -283,7 +283,7 @@ function Builder({ draft, setDraft, pupils, onClose, reload }) {
                     }
                     className={cn(
                       "flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm",
-                      on ? "border-[hsl(var(--wp-teal))] bg-[hsl(var(--wp-teal-100))]" : "border-[hsl(var(--border))]"
+                      on ? "border-[hsl(var(--wp-primary))] bg-[hsl(var(--wp-primary-soft))]" : "border-[hsl(var(--border))]"
                     )}
                     data-testid="story-pupil-toggle"
                   >

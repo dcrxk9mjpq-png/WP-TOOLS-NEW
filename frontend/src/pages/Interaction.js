@@ -249,7 +249,7 @@ function Blanks({ prompts, pupils, options, canEdit, reload }) {
               className={cn(
                 "rounded-[var(--wp-radius-lg)] border p-3 text-left transition-shadow duration-200",
                 level === l
-                  ? "border-[hsl(var(--wp-teal))] bg-[hsl(var(--wp-teal-100))]"
+                  ? "border-[hsl(var(--wp-primary))] bg-[hsl(var(--wp-primary-soft))]"
                   : "border-[hsl(var(--border))] bg-white"
               )}
               data-testid="blanks-level-button"
@@ -272,7 +272,7 @@ function Blanks({ prompts, pupils, options, canEdit, reload }) {
               className={cn(
                 "flex items-center justify-between gap-3 rounded-[var(--wp-radius-lg)] border p-3 text-left",
                 prompt === p.text
-                  ? "border-[hsl(var(--wp-teal))] bg-[hsl(var(--wp-teal-100))]"
+                  ? "border-[hsl(var(--wp-primary))] bg-[hsl(var(--wp-primary-soft))]"
                   : "border-[hsl(var(--border))] bg-white"
               )}
               data-testid="blanks-prompt"

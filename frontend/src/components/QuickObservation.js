@@ -96,7 +96,7 @@ export const QuickObservationSheet = ({ open, onOpenChange, presetPupilId, onSav
                     className={cn(
                       "flex flex-col items-center gap-1.5 rounded-[var(--wp-radius-lg)] border p-2 transition-shadow duration-200",
                       pupilId === p.id
-                        ? "border-[hsl(var(--wp-teal))] ring-2 ring-[hsl(var(--wp-teal))]"
+                        ? "border-[hsl(var(--wp-primary))] ring-2 ring-[hsl(var(--wp-primary))]"
                         : "border-[hsl(var(--border))] bg-white"
                     )}
                   >

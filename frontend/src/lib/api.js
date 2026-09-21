@@ -39,7 +39,7 @@ export const symbolUrl = (conceptKey) =>
 export const pupilPhotoUrl = (pupilId) => `${API_BASE}/pupils/${pupilId}/photo`;
 
 export const TINTS = {
-  teal: "hsl(var(--wp-teal-100))",
+  teal: "hsl(var(--wp-primary-soft))",
   mint: "hsl(var(--wp-tint-mint))",
   peach: "hsl(var(--wp-tint-peach))",
   lilac: "hsl(var(--wp-tint-lilac))",
@@ -78,6 +78,42 @@ export const formatLongDate = (iso) => {
     });
   } catch (e) {
     return iso;
+  }
+};
+
+/**
+ * Today, as the classroom experiences it.
+ *
+ * The device could be set to any timezone and `toISOString()` is UTC, which
+ * silently shows yesterday's date to anyone using the platform late in the
+ * evening during British Summer Time. The server works in Europe/London, so
+ * the browser must too or the two disagree about what day it is.
+ */
+export const SCHOOL_TIME_ZONE = "Europe/London";
+
+export const todayIso = () => {
+  try {
+    // en-CA formats as YYYY-MM-DD
+    return new Date().toLocaleDateString("en-CA", { timeZone: SCHOOL_TIME_ZONE });
+  } catch (e) {
+    return new Date().toISOString().slice(0, 10);
+  }
+};
+
+/** Minutes since midnight in the school's timezone. */
+export const schoolMinutesNow = () => {
+  try {
+    const parts = new Date().toLocaleTimeString("en-GB", {
+      timeZone: SCHOOL_TIME_ZONE,
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const [h, m] = parts.split(":").map(Number);
+    return h * 60 + m;
+  } catch (e) {
+    const now = new Date();
+    return now.getHours() * 60 + now.getMinutes();
   }
 };
 

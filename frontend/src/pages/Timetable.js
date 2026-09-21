@@ -26,7 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { api, errorMessage, formatLongDate } from "@/lib/api";
+import { api, errorMessage, formatLongDate, todayIso } from "@/lib/api";
 import { useApp } from "@/context/AppContext";
 import { SymbolImage } from "@/components/Symbol";
 import { SymbolField } from "@/components/SymbolPicker";
@@ -61,7 +61,7 @@ const emptyItem = {
 
 export default function Timetable() {
   const { can } = useApp();
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [date, setDate] = useState(todayIso());
   const [day, setDay] = useState(null);
   const [templates, setTemplates] = useState([]);
   const [activities, setActivities] = useState([]);
@@ -463,7 +463,7 @@ export default function Timetable() {
                       type="button"
                       onClick={() => setEditing({ ...editing, colour: c })}
                       className={`h-8 w-8 rounded-full border-2 ${
-                        editing.colour === c ? "border-[hsl(var(--wp-teal))]" : "border-white"
+                        editing.colour === c ? "border-[hsl(var(--wp-primary))]" : "border-white"
                       }`}
                       style={{ backgroundColor: `hsl(var(--wp-tint-${c === "teal" ? "mint" : c}))` }}
                       aria-label={c}
@@ -974,7 +974,7 @@ function PupilAdaptations({ pupils, day, date, canEdit }) {
                       <StatusChip status={item.status} />
                     </div>
                     {item.adaptation?.steps?.length ? (
-                      <ol className="mt-3 space-y-1.5 border-l-2 border-[hsl(var(--wp-teal-100))] pl-3">
+                      <ol className="mt-3 space-y-1.5 border-l-2 border-[hsl(var(--wp-primary-soft))] pl-3">
                         {item.adaptation.steps.map((s) => (
                           <li key={s.id} className="flex items-center gap-2 text-sm">
                             <SymbolImage conceptKey={s.symbol_concept} size="xs" alt="" />

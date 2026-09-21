@@ -184,7 +184,7 @@ export default function Pupils() {
                       }}
                       className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${
                         inGroup
-                          ? "border-[hsl(var(--wp-teal))] bg-white"
+                          ? "border-[hsl(var(--wp-primary))] bg-white"
                           : "border-[hsl(var(--border))] bg-white/60 opacity-60"
                       }`}
                       data-testid="group-member-toggle"

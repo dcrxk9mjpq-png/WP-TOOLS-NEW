@@ -34,6 +34,9 @@ from routers import pupils as pupils_router  # noqa: E402
 from routers import regulation as regulation_router  # noqa: E402
 from routers import symbols as symbols_router  # noqa: E402
 from routers import timetable as timetable_router  # noqa: E402
+from routers import tts as tts_router  # noqa: E402
+from routers import brain_breaks as brain_breaks_router  # noqa: E402
+from routers import watch as watch_router  # noqa: E402
 from seed import seed_all  # noqa: E402
 
 logging.basicConfig(
@@ -87,6 +90,9 @@ api.include_router(platform_module.projects_router)
 api.include_router(platform_module.mainstream_router)
 api.include_router(platform_module.today_router)
 api.include_router(platform_module.settings_router)
+api.include_router(tts_router.router)
+api.include_router(brain_breaks_router.router)
+api.include_router(watch_router.router)
 
 app.include_router(api)
 

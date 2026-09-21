@@ -1,4 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap");
+/* ==========================================================================
+   Frith Classroom - design tokens
+   --------------------------------------------------------------------------
+   One token layer, two modes.
+
+   STAFF MODE (default)   muted, utilitarian, professional. Montserrat titles
+                          over Figtree body copy. Flat elevated cards, a single
+                          muted green accent, red reserved for destructive
+                          actions only.
+
+   PUPIL MODE             html[data-mode="pupil"]. Pastel surfaces, clay-like
+                          tiles, Fredoka, very large targets. Two selectable
+                          palettes via html[data-pupil-theme="pastel" | "bold"]
+                          so the classroom can pick what suits the children.
+
+   Everything below is a token. Screens consume hsl(var(--token)); no screen
+   contains a raw colour.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Figtree:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,147 +25,342 @@
 
 @layer base {
     :root {
-        --background: 38 45% 97%;
-        --foreground: 196 35% 14%;
+        /* ---- shadcn surface contract ---- */
+        --background: 40 33% 98%;
+        --foreground: 196 28% 14%;
         --card: 0 0% 100%;
-        --card-foreground: 196 35% 14%;
+        --card-foreground: 196 28% 14%;
         --popover: 0 0% 100%;
-        --popover-foreground: 196 35% 14%;
-        --primary: 174 55% 28%;
+        --popover-foreground: 196 28% 14%;
+
+        --primary: 154 34% 28%;
         --primary-foreground: 0 0% 100%;
-        --secondary: 38 35% 93%;
-        --secondary-foreground: 196 35% 14%;
-        --muted: 38 28% 92%;
-        --muted-foreground: 196 12% 38%;
-        --accent: 168 35% 90%;
-        --accent-foreground: 196 35% 14%;
-        --destructive: 6 72% 52%;
+
+        --secondary: 40 18% 94%;
+        --secondary-foreground: 196 28% 14%;
+
+        --muted: 40 16% 93%;
+        --muted-foreground: 196 10% 36%;
+
+        --accent: 154 28% 92%;
+        --accent-foreground: 154 38% 20%;
+
+        --destructive: 6 68% 46%;
         --destructive-foreground: 0 0% 100%;
-        --border: 196 18% 86%;
-        --input: 196 18% 86%;
-        --ring: 174 55% 28%;
+
+        --border: 196 16% 84%;
+        --input: 196 16% 84%;
+        --ring: 154 40% 32%;
+
         --radius: 1rem;
 
-        --chart-1: 174 55% 32%;
-        --chart-2: 210 55% 45%;
-        --chart-3: 24 75% 58%;
-        --chart-4: 270 40% 60%;
-        --chart-5: 48 80% 55%;
+        --chart-1: 154 34% 32%;
+        --chart-2: 205 55% 40%;
+        --chart-3: 24 70% 52%;
+        --chart-4: 160 42% 28%;
+        --chart-5: 48 75% 46%;
 
-        --wp-surface-cream: 38 45% 97%;
-        --wp-surface-ivory: 42 40% 95%;
-        --wp-ink: 196 35% 14%;
-        --wp-ink-muted: 196 12% 38%;
+        /* ---- surfaces and ink ---- */
+        --wp-surface-cream: 40 33% 98%;
+        --wp-surface-ivory: 42 26% 96%;
+        --wp-surface-sunken: 40 20% 95%;
+        --wp-ink: 196 28% 14%;
+        --wp-ink-muted: 196 10% 36%;
+        --wp-ink-faint: 196 8% 48%;
 
-        --wp-teal: 174 55% 28%;
-        --wp-teal-600: 174 60% 22%;
-        --wp-teal-100: 168 35% 90%;
+        /* ---- the one accent ---- */
+        --wp-primary: 154 34% 28%;
+        --wp-primary-700: 154 38% 20%;
+        --wp-primary-500: 154 34% 34%;
+        --wp-primary-soft: 154 28% 90%;
+        --wp-primary-tint: 154 30% 96%;
 
-        --wp-aubergine: 282 28% 22%;
-        --wp-aubergine-700: 282 30% 17%;
+        /* ---- meaning, not decoration ---- */
+        --wp-danger: 6 68% 46%;
+        --wp-danger-soft: 6 70% 95%;
+        --wp-warning: 35 85% 40%;
+        --wp-warning-soft: 40 90% 94%;
+        --wp-success: 160 42% 28%;
+        --wp-success-soft: 160 38% 93%;
+        --wp-info: 205 55% 34%;
+        --wp-info-soft: 205 60% 94%;
+        --wp-focus: 154 55% 34%;
 
-        --wp-tint-mint: 160 45% 92%;
-        --wp-tint-peach: 24 85% 92%;
-        --wp-tint-lilac: 270 45% 93%;
-        --wp-tint-butter: 48 90% 92%;
-        --wp-tint-blush: 350 70% 93%;
-        --wp-tint-sage: 120 25% 92%;
-        --wp-tint-sky: 205 70% 93%;
-        --wp-tint-rose: 340 65% 93%;
+        /* ---- tints used for pupil avatars, category cards, stat tiles ---- */
+        --wp-tint-mint: 154 30% 92%;
+        --wp-tint-sage: 120 18% 92%;
+        --wp-tint-sky: 205 55% 92%;
+        --wp-tint-peach: 24 70% 92%;
+        --wp-tint-butter: 48 80% 92%;
+        --wp-tint-blush: 350 45% 93%;
+        --wp-tint-rose: 340 45% 93%;
+        --wp-tint-lilac: 255 32% 93%;
 
-        --wp-state-now: 174 55% 28%;
-        --wp-state-next: 210 55% 40%;
-        --wp-state-later: 196 12% 38%;
-        --wp-state-done: 160 45% 30%;
-        --wp-state-skipped: 24 65% 45%;
+        /* ---- timetable state palette (see also .wp-state-* classes) ---- */
+        --wp-state-now: 154 34% 28%;
+        --wp-state-now-bg: 154 28% 90%;
+        --wp-state-now-border: 154 30% 70%;
+        --wp-state-next: 205 55% 26%;
+        --wp-state-next-bg: 205 55% 93%;
+        --wp-state-next-border: 205 35% 74%;
+        --wp-state-later: 196 10% 34%;
+        --wp-state-later-bg: 40 16% 94%;
+        --wp-state-later-border: 196 16% 84%;
+        --wp-state-done: 160 45% 22%;
+        --wp-state-done-bg: 160 35% 92%;
+        --wp-state-done-border: 160 25% 74%;
+        --wp-state-skipped: 35 85% 26%;
+        --wp-state-skipped-bg: 40 90% 93%;
+        --wp-state-skipped-border: 35 55% 74%;
 
-        --wp-focus: 174 70% 35%;
+        /* ---- Zones of Regulation. Named colours: never re-hue these.
+                Zone green sits at 140 so it cannot be mistaken for the
+                platform's 154 accent green. ---- */
+        --wp-zone-blue: 205 70% 26%;
+        --wp-zone-blue-bg: 205 70% 92%;
+        --wp-zone-blue-border: 205 45% 70%;
+        --wp-zone-green: 140 55% 24%;
+        --wp-zone-green-bg: 140 45% 92%;
+        --wp-zone-green-border: 140 30% 70%;
+        --wp-zone-yellow: 40 90% 26%;
+        --wp-zone-yellow-bg: 48 95% 90%;
+        --wp-zone-yellow-border: 48 55% 70%;
+        --wp-zone-red: 6 70% 30%;
+        --wp-zone-red-bg: 6 85% 92%;
+        --wp-zone-red-border: 6 45% 72%;
 
-        --wp-shadow-sm: 0 1px 0 rgba(16, 24, 40, 0.04),
-            0 1px 2px rgba(16, 24, 40, 0.06);
-        --wp-shadow-md: 0 2px 6px rgba(16, 24, 40, 0.08),
-            0 10px 24px rgba(16, 24, 40, 0.06);
-        --wp-shadow-float: 0 10px 30px rgba(16, 24, 40, 0.14);
+        /* ---- elevation ---- */
+        --wp-shadow-sm: 0 1px 0 hsl(196 28% 14% / 0.04),
+            0 1px 2px hsl(196 28% 14% / 0.06);
+        --wp-shadow-md: 0 2px 6px hsl(196 28% 14% / 0.07),
+            0 10px 24px hsl(196 28% 14% / 0.05);
+        --wp-shadow-float: 0 14px 40px hsl(196 28% 14% / 0.14);
 
-        --wp-radius-sm: 0.75rem;
-        --wp-radius-md: 1rem;
-        --wp-radius-lg: 1.25rem;
-        --wp-radius-xl: 1.75rem;
-        --wp-radius-2xl: 2.25rem;
+        /* ---- shape ---- */
+        --wp-radius-sm: 0.625rem;
+        --wp-radius-md: 0.875rem;
+        --wp-radius-lg: 1.125rem;
+        --wp-radius-xl: 1.375rem;
+        --wp-radius-2xl: 1.625rem;
 
+        /* ---- rhythm (driven by the density setting) ---- */
         --wp-gap: 1.5rem;
-        --wp-card-pad: 1.25rem;
+        --wp-card-pad: 1.375rem;
+        --wp-row-pad: 0.875rem;
+
+        /* ---- layering ---- */
+        --wp-z-base: 0;
+        --wp-z-sticky: 20;
+        --wp-z-sidebar: 30;
+        --wp-z-dropdown: 100;
+        --wp-z-modal: 200;
+        --wp-z-toast: 300;
+
+        /* ---- type ---- */
+        --wp-font-body: "Figtree", ui-sans-serif, "Segoe UI", Roboto, Arial,
+            sans-serif;
+        --wp-font-display: "Montserrat", "Figtree", ui-sans-serif, sans-serif;
+
+        /* ---- clay (pupil mode only; declared here so the token exists) ---- */
+        --wp-clay-shade: 154 30% 62%;
+        --wp-clay-drop: 0 10px 18px -6px hsl(var(--wp-clay-shade) / 0.5);
+        --wp-clay-inner-light: inset 0 3px 0 0 hsl(0 0% 100% / 0.85);
+        --wp-clay-inner-dark: inset 0 -5px 0 0 hsl(var(--wp-clay-shade) / 0.35);
     }
 
-    /* ---- Appearance: visual density ---- */
+    /* =====================================================================
+       PUPIL MODE
+       Pastel surfaces, clay tiles, Fredoka, bigger everything.
+       ===================================================================== */
+    html[data-mode="pupil"] {
+        --background: 42 46% 97%;
+        --card: 0 0% 100%;
+        --foreground: 200 30% 16%;
+        --card-foreground: 200 30% 16%;
+        --primary: 154 42% 32%;
+        --primary-foreground: 0 0% 100%;
+        --border: 196 22% 84%;
+        --ring: 154 58% 38%;
+        --muted: 42 30% 94%;
+        --muted-foreground: 200 14% 34%;
+
+        --wp-surface-cream: 42 46% 97%;
+        --wp-surface-ivory: 42 40% 95%;
+        --wp-ink: 200 30% 16%;
+        --wp-ink-muted: 200 14% 34%;
+        --wp-primary: 154 42% 32%;
+        --wp-primary-700: 154 46% 24%;
+        --wp-primary-soft: 154 46% 90%;
+        --wp-focus: 154 62% 36%;
+
+        --wp-font-body: "Fredoka", "Figtree", ui-sans-serif, sans-serif;
+        --wp-font-display: "Fredoka", "Figtree", ui-sans-serif, sans-serif;
+
+        --wp-radius-sm: 1rem;
+        --wp-radius-md: 1.25rem;
+        --wp-radius-lg: 1.5rem;
+        --wp-radius-xl: 1.75rem;
+        --wp-radius-2xl: 2rem;
+
+        --wp-gap: 1.25rem;
+        --wp-card-pad: 1.5rem;
+    }
+
+    /* Soft pastels. The calm option, and the default. */
+    html[data-mode="pupil"][data-pupil-theme="pastel"] {
+        --wp-tile-1: 154 55% 90%;
+        --wp-tile-2: 196 62% 90%;
+        --wp-tile-3: 36 82% 90%;
+        --wp-tile-4: 48 88% 88%;
+        --wp-tile-5: 340 55% 92%;
+        --wp-tile-6: 264 40% 92%;
+        --wp-tile-ink: 200 32% 18%;
+        --wp-clay-shade: 196 30% 66%;
+    }
+
+    /* Deeper, higher-contrast pastels. The same hues, more presence -
+       easier to tell apart from across the room and on a projector. */
+    html[data-mode="pupil"][data-pupil-theme="bold"] {
+        --wp-tile-1: 154 48% 78%;
+        --wp-tile-2: 196 58% 78%;
+        --wp-tile-3: 30 84% 80%;
+        --wp-tile-4: 45 88% 76%;
+        --wp-tile-5: 344 56% 84%;
+        --wp-tile-6: 262 40% 84%;
+        --wp-tile-ink: 200 38% 14%;
+        --wp-clay-shade: 200 34% 52%;
+    }
+
+    /* =====================================================================
+       ACCESSIBILITY SETTINGS - these must visibly change every screen.
+       ===================================================================== */
     html[data-density="compact"] {
         --wp-gap: 1rem;
         --wp-card-pad: 0.875rem;
+        --wp-row-pad: 0.625rem;
     }
     html[data-density="spacious"] {
         --wp-gap: 2.25rem;
-        --wp-card-pad: 1.75rem;
+        --wp-card-pad: 2rem;
+        --wp-row-pad: 1.25rem;
     }
 
-    /* ---- Appearance: high contrast ---- */
     html[data-contrast="high"] {
-        --border: 196 30% 62%;
-        --muted-foreground: 196 25% 24%;
-        --wp-tint-mint: 160 40% 86%;
-        --wp-tint-peach: 24 80% 87%;
-        --wp-tint-lilac: 270 40% 88%;
-        --wp-tint-butter: 48 85% 86%;
-        --wp-tint-blush: 350 65% 88%;
-        --wp-tint-sage: 120 25% 87%;
-        --wp-tint-sky: 205 65% 87%;
-        --wp-tint-rose: 340 60% 88%;
+        --border: 196 26% 60%;
+        --input: 196 26% 60%;
+        --muted-foreground: 196 20% 22%;
+        --wp-ink-muted: 196 20% 22%;
+        --wp-ink-faint: 196 20% 28%;
+        --wp-primary-soft: 154 34% 84%;
+        --wp-state-now-bg: 154 32% 84%;
+        --wp-state-next-bg: 205 52% 86%;
+        --wp-state-later-bg: 40 16% 88%;
+        --wp-state-done-bg: 160 34% 86%;
+        --wp-state-skipped-bg: 40 86% 86%;
+        --wp-tint-mint: 154 32% 85%;
+        --wp-tint-sage: 120 20% 85%;
+        --wp-tint-sky: 205 52% 85%;
+        --wp-tint-peach: 24 66% 86%;
+        --wp-tint-butter: 48 76% 85%;
+        --wp-tint-blush: 350 44% 87%;
+        --wp-tint-rose: 340 44% 87%;
+        --wp-tint-lilac: 255 32% 87%;
     }
     html[data-contrast="high"] .wp-card,
-    html[data-contrast="high"] .wp-row {
+    html[data-contrast="high"] .wp-row,
+    html[data-contrast="high"] .wp-tile {
         border-width: 2px;
+    }
+    html[data-contrast="high"] :focus-visible {
+        outline-width: 3px;
     }
 
     * {
         @apply border-border;
     }
 
+    html {
+        -webkit-text-size-adjust: 100%;
+    }
+
     body {
         margin: 0;
-        font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto,
-            Helvetica, Arial, sans-serif;
+        font-family: var(--wp-font-body);
+        font-size: 1rem;
+        line-height: 1.5;
         background-color: hsl(var(--wp-surface-cream));
         color: hsl(var(--wp-ink));
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        font-variant-numeric: tabular-nums;
     }
 
     h1,
     h2,
     h3,
     h4,
+    h5,
+    h6,
     .wp-display {
-        font-family: "Space Grotesk", "Figtree", system-ui, sans-serif;
-        letter-spacing: -0.01em;
+        font-family: var(--wp-font-display);
+        letter-spacing: -0.012em;
+        line-height: 1.15;
+        text-wrap: balance;
+    }
+
+    html[data-mode="pupil"] .wp-display,
+    html[data-mode="pupil"] h1,
+    html[data-mode="pupil"] h2,
+    html[data-mode="pupil"] h3 {
+        letter-spacing: 0;
     }
 
     :focus-visible {
         outline: 2px solid hsl(var(--wp-focus));
         outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    ::selection {
+        background-color: hsl(var(--wp-primary-soft));
+        color: hsl(var(--wp-primary-700));
+    }
+
+    /* Numbers that tick (timers, counters) must not jiggle. */
+    .wp-tabular {
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
     }
 }
 
 @layer components {
+    /* ---- surfaces ---------------------------------------------------- */
     .wp-card {
         border-radius: var(--wp-radius-2xl);
-        background-color: #ffffff;
+        background-color: hsl(var(--card));
         border: 1px solid hsl(var(--border));
         box-shadow: var(--wp-shadow-sm);
     }
 
     .wp-row {
-        border-radius: var(--wp-radius-xl);
-        background-color: #ffffff;
+        border-radius: var(--wp-radius-lg);
+        background-color: hsl(var(--card));
         border: 1px solid hsl(var(--border));
+    }
+
+    .wp-row-interactive {
+        transition-property: background-color, border-color, box-shadow;
+        transition-duration: 180ms;
+        transition-timing-function: ease-out;
+    }
+    .wp-row-interactive:hover {
+        background-color: hsl(var(--wp-primary-tint));
+        border-color: hsl(var(--wp-primary-soft));
+    }
+
+    .wp-sunken {
+        background-color: hsl(var(--wp-surface-sunken));
+        border-radius: var(--wp-radius-lg);
     }
 
     .wp-pad {
@@ -159,31 +373,41 @@
         gap: var(--wp-gap);
     }
 
-    .wp-hatch {
-        background-image: repeating-linear-gradient(
-            45deg,
-            rgba(120, 113, 108, 0.14) 0,
-            rgba(120, 113, 108, 0.14) 6px,
-            transparent 6px,
-            transparent 12px
-        );
+    .wp-grid {
+        display: grid;
+        gap: var(--wp-gap);
     }
 
-    .wp-noise {
-        background-image: radial-gradient(
-                circle at 18% 12%,
-                hsl(var(--wp-tint-mint) / 0.75) 0%,
-                transparent 45%
-            ),
-            radial-gradient(
-                circle at 82% 8%,
-                hsl(var(--wp-tint-peach) / 0.7) 0%,
-                transparent 40%
-            );
+    /* ---- the canonical symbol plate ----------------------------------
+       Widgit line art is drawn on white. Left bare it reads as clipart
+       dropped on a card, so it always sits on its own plate: white inside,
+       tinted frame outside. The artwork itself is never recoloured. ---- */
+    .wp-symbol-plate {
+        background-color: #ffffff;
+        border: 1px solid hsl(var(--border));
+        border-radius: var(--wp-radius-md);
     }
 
+    /* ---- clay, pupil mode only --------------------------------------- */
+    .wp-clay {
+        border-radius: var(--wp-radius-2xl);
+        border: 1px solid hsl(0 0% 100% / 0.7);
+        box-shadow: var(--wp-clay-drop), var(--wp-clay-inner-light),
+            var(--wp-clay-inner-dark);
+        transition-property: transform, box-shadow, background-color;
+        transition-duration: 180ms;
+        transition-timing-function: ease-out;
+    }
+    .wp-clay:active {
+        transform: translateY(2px) scale(0.985);
+        box-shadow: 0 4px 10px -4px hsl(var(--wp-clay-shade) / 0.5),
+            var(--wp-clay-inner-light);
+    }
+
+    /* ---- horizontal scrollers ---------------------------------------- */
     .wp-scroll-x {
         overflow-x: auto;
+        overscroll-behavior-x: contain;
         scrollbar-width: thin;
     }
     .wp-scroll-x::-webkit-scrollbar {
@@ -193,9 +417,71 @@
         background: hsl(var(--border));
         border-radius: 999px;
     }
+
+    /* ---- a hatched band marking a slot the clock has already passed --- */
+    .wp-hatch {
+        background-image: repeating-linear-gradient(
+            45deg,
+            hsl(var(--wp-ink) / 0.06) 0,
+            hsl(var(--wp-ink) / 0.06) 5px,
+            transparent 5px,
+            transparent 11px
+        );
+    }
+
+    /* ---- paper grain: stops large cream areas reading as flat --------- */
+    .wp-grain {
+        position: relative;
+    }
+    .wp-grain::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.035;
+        background-image: radial-gradient(
+                hsl(var(--wp-ink)) 0.5px,
+                transparent 0.5px
+            ),
+            radial-gradient(hsl(var(--wp-ink)) 0.5px, transparent 0.5px);
+        background-size: 7px 7px, 11px 11px;
+        background-position: 0 0, 3px 4px;
+    }
 }
 
-/* ---- Appearance: animation level ---- */
+/* ==========================================================================
+   Motion. Only transform and opacity, 150-250ms, and switchable off.
+   ========================================================================== */
+@keyframes wp-breathe-in {
+    from {
+        transform: scale(0.62);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@keyframes wp-breathe-out {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.62);
+    }
+}
+@keyframes wp-speaking {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+
+.wp-speaking {
+    animation: wp-speaking 1.1s ease-in-out infinite;
+}
+
 html[data-animation="none"] *,
 html[data-animation="none"] *::before,
 html[data-animation="none"] *::after {
@@ -210,6 +496,7 @@ html[data-animation="none"] *::after {
     *::after {
         transition-duration: 0ms !important;
         animation-duration: 0ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
 

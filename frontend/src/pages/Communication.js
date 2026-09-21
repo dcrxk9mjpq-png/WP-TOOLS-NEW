@@ -131,7 +131,7 @@ export default function Communication() {
                   className={cn(
                     "flex w-full items-center gap-3 rounded-[var(--wp-radius-lg)] border p-2.5 text-left transition-shadow duration-200",
                     active?.id === cat.id
-                      ? "border-[hsl(var(--wp-teal))] ring-2 ring-[hsl(var(--wp-teal))]"
+                      ? "border-[hsl(var(--wp-primary))] ring-2 ring-[hsl(var(--wp-primary))]"
                       : "border-[hsl(var(--border))]"
                   )}
                   style={{ backgroundColor: tint(cat.colour) }}
@@ -246,7 +246,7 @@ export default function Communication() {
                       size="lg"
                       showLabel
                       onClick={() => speakOption(option)}
-                      className={cn(spoken === option.id && "ring-4 ring-[hsl(var(--wp-teal))]")}
+                      className={cn(spoken === option.id && "ring-4 ring-[hsl(var(--wp-primary))]")}
                       testId="communication-option-tile"
                     />
                     {editMode ? (
@@ -409,7 +409,7 @@ function OptionEditor({ option, reload }) {
     );
   }
   return (
-    <div className="absolute inset-x-0 top-0 z-10 space-y-2 rounded-[var(--wp-radius-lg)] border border-[hsl(var(--wp-teal))] bg-white p-2 shadow-[var(--wp-shadow-md)]">
+    <div className="absolute inset-x-0 top-0 z-10 space-y-2 rounded-[var(--wp-radius-lg)] border border-[hsl(var(--wp-primary))] bg-white p-2 shadow-[var(--wp-shadow-md)]">
       <Input
         defaultValue={option.text}
         onBlur={async (e) => {

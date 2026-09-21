@@ -4,6 +4,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
+from core import dayclock, videolink
 from core.crud import create_doc, delete_doc, list_docs, patch_doc
 from core.db import C, get_db
 from core.permissions import has_permission
@@ -200,14 +201,9 @@ async def today(date: str | None = None, user: dict = Depends(current_user)):
     settings = await db[C.settings].find_one({"id": "global"}, {"_id": 0}) or {}
 
     day = await db[C.daily].find_one({"date": d}, {"_id": 0}) or {"date": d, "items": []}
-    items = day.get("items", [])
-    current = next((i for i in items if i.get("status") == "current"), None)
-    idx = items.index(current) if current else -1
-    open_after = [
-        i for n, i in enumerate(items) if n > idx and i.get("status") not in {"done", "skipped"}
-    ]
-    nxt = open_after[0] if open_after else None
-    later = open_after[1:]
+    state = dayclock.derive(day.get("items", []), d)
+    items = state["items"]
+    current, nxt, later = state["now"], state["next"], state["later"]
 
     jobs = await db[C.jobs].find({"enabled": True}, {"_id": 0}).sort("order", 1).to_list(50)
     assignments = await db[C.job_assignments].find({"date": d}, {"_id": 0}).to_list(100)
@@ -231,6 +227,18 @@ async def today(date: str | None = None, user: dict = Depends(current_user)):
 
     comm_cats = await db[C.comm_categories].find({"enabled": True}, {"_id": 0}).sort("order", 1).to_list(20)
     zones = await db[C.zones].find({"enabled": True}, {"_id": 0}).sort("order", 1).to_list(20)
+    breaks = (
+        await db[C.brain_breaks]
+        .find({"enabled": True}, {"_id": 0})
+        .sort("order", 1)
+        .to_list(50)
+    )
+    watch = (
+        await db[C.watch]
+        .find({"enabled": True, "featured": True}, {"_id": 0})
+        .sort("order", 1)
+        .to_list(30)
+    )
 
     spark_events = await db[C.spark_events].find({}, {"_id": 0}).to_list(5000)
     class_total = sum(int(e.get("points", 1)) for e in spark_events)
@@ -250,13 +258,15 @@ async def today(date: str | None = None, user: dict = Depends(current_user)):
         "sample_data": settings.get("sample_data", True),
         "appearance": settings.get("appearance", {}),
         "features": settings.get("features", {}),
+        "tts": settings.get("tts", {}),
         "gamification": settings.get("gamification", {}),
         "pupil_facing": settings.get("pupil_facing", {}),
         "now": serialize_doc(current),
         "next": serialize_doc(nxt),
         "later": serialize_docs(later),
+        "now_source": state["now_source"],
         "items": serialize_docs(items),
-        "progress": {"done": len([i for i in items if i.get("status") == "done"]), "total": len(items)},
+        "progress": state["progress"],
         "jobs": job_cards,
         "morning_meeting": {
             "components": mm_components,
@@ -266,6 +276,10 @@ async def today(date: str | None = None, user: dict = Depends(current_user)):
         },
         "communication_categories": serialize_docs(comm_cats),
         "zones": serialize_docs(zones),
+        "brain_breaks": serialize_docs(breaks),
+        "watch": serialize_docs(
+            [{**w, "video": videolink.describe(w.get("url") or "")} for w in watch]
+        ),
         "sparks": {
             "class_total": class_total,
             "today": sum(int(e.get("points", 1)) for e in today_events),
@@ -297,6 +311,7 @@ async def patch_settings(body: dict, user: dict = Depends(require("settings.edit
         "gamification",
         "features",
         "pupil_facing",
+        "tts",
     }
     current = await db[C.settings].find_one({"id": "global"}, {"_id": 0}) or {}
     patch: dict = {}

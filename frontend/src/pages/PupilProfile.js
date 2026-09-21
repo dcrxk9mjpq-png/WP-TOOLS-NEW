@@ -142,7 +142,7 @@ export default function PupilProfile() {
               <ul className="space-y-2">
                 {(sections[section.key] || []).map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    <span className="mt-0 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--wp-teal))]" aria-hidden="true" />
+                    <span className="mt-0 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--wp-primary))]" aria-hidden="true" />
                     {canEditProfile ? (
                       <Input
                         defaultValue={item}

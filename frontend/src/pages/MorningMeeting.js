@@ -169,7 +169,7 @@ function RunMode({ payload, pupils, strategies, dayItems, reload }) {
             className={cn(
               "flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors duration-200",
               n === safeIndex
-                ? "border-[hsl(var(--wp-teal))] bg-[hsl(var(--wp-teal-100))] text-[hsl(var(--wp-teal-600))]"
+                ? "border-[hsl(var(--wp-primary))] bg-[hsl(var(--wp-primary-soft))] text-[hsl(var(--wp-primary-700))]"
                 : completed.includes(c.id)
                 ? "border-emerald-200 bg-emerald-50 text-emerald-800"
                 : skipped.includes(c.id)
@@ -394,7 +394,7 @@ function ComponentBody({ component, run, pupils, expectations, strategies, dayIt
                 className={cn(
                   "w-[150px] shrink-0 rounded-[var(--wp-radius-xl)] border p-3 text-center",
                   item.status === "current"
-                    ? "border-[hsl(var(--wp-teal))] bg-[hsl(var(--wp-teal-100))]"
+                    ? "border-[hsl(var(--wp-primary))] bg-[hsl(var(--wp-primary-soft))]"
                     : "border-[hsl(var(--border))] bg-white",
                   item.status === "done" ? "opacity-60" : ""
                 )}

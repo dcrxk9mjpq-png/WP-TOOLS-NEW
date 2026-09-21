@@ -14,6 +14,8 @@ import MorningMeeting from "@/pages/MorningMeeting";
 import Communication from "@/pages/Communication";
 import Interaction from "@/pages/Interaction";
 import Regulation from "@/pages/Regulation";
+import BrainBreaks from "@/pages/BrainBreaks";
+import Watch from "@/pages/Watch";
 import PrepareMe from "@/pages/PrepareMe";
 import Jobs from "@/pages/Jobs";
 import Pickers from "@/pages/Pickers";
@@ -55,6 +57,8 @@ function Shell() {
           <Route path="/pupil/day" element={<PupilMode view="day" />} />
           <Route path="/pupil/talk" element={<PupilMode view="talk" />} />
           <Route path="/pupil/feel" element={<PupilMode view="feel" />} />
+          <Route path="/pupil/watch" element={<PupilMode view="watch" />} />
+          <Route path="/pupil/breaks" element={<PupilMode view="breaks" />} />
           <Route path="/pupil/sparks" element={<PupilMode view="sparks" />} />
           <Route path="*" element={<Navigate to="/pupil" replace />} />
         </Routes>
@@ -71,6 +75,8 @@ function Shell() {
         <Route path="/communication" element={<Communication />} />
         <Route path="/interaction" element={<Interaction />} />
         <Route path="/regulation" element={<Regulation />} />
+        <Route path="/brain-breaks" element={<BrainBreaks />} />
+        <Route path="/watch" element={<Watch />} />
         <Route path="/prepare-me" element={<PrepareMe />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/pickers" element={<Pickers />} />
@@ -96,7 +102,7 @@ export default function App() {
       <AppProvider>
         <BrowserRouter>
           <Shell />
-          <Toaster position="top-right" richColors />
+          <Toaster position="bottom-right" closeButton />
         </BrowserRouter>
       </AppProvider>
     </div>

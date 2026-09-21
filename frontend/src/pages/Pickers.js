@@ -154,7 +154,7 @@ export default function Pickers() {
           <div className="flex flex-col items-center gap-4 py-6 text-center">
             {spinning ? (
               <>
-                <Dices className="h-20 w-20 animate-spin text-[hsl(var(--wp-teal))]" aria-hidden="true" />
+                <Dices className="h-20 w-20 animate-spin text-[hsl(var(--wp-primary))]" aria-hidden="true" />
                 <p className="text-sm text-[hsl(var(--wp-ink-muted))]">Choosing…</p>
               </>
             ) : result ? (

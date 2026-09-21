@@ -6,8 +6,11 @@ import {
   CalendarDays,
   Dices,
   Eye,
+  Film,
   Hand,
   Home,
+  Leaf,
+  Lightbulb,
   LogOut,
   Menu,
   MessageCircle,
@@ -19,7 +22,6 @@ import {
   Sun,
   Users,
   Wand2,
-  Lightbulb,
 } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -33,8 +35,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useApp } from "@/context/AppContext";
-import { formatLongDate } from "@/lib/api";
-import { Mascot } from "@/components/common";
+import { formatLongDate, todayIso } from "@/lib/api";
+import { FrithWordmark, SchoolIdentity } from "@/components/Brand";
 import { QuickObservationSheet } from "@/components/QuickObservation";
 
 export const NAV = [
@@ -77,6 +79,20 @@ export const NAV = [
         icon: Lightbulb,
         permission: "regulation.view",
         feature: "regulation",
+      },
+      {
+        to: "/brain-breaks",
+        label: "Brain Breaks",
+        icon: Leaf,
+        permission: "brain_breaks.view",
+        feature: "brain_breaks",
+      },
+      {
+        to: "/watch",
+        label: "Watch",
+        icon: Film,
+        permission: "watch.view",
+        feature: "watch",
       },
       {
         to: "/prepare-me",
@@ -124,19 +140,7 @@ export const NAV = [
 
 const MOBILE_PRIMARY = ["/", "/timetable", "/communication", "/pupils"];
 
-const Brand = ({ compact = false }) => (
-  <Link to="/" className="flex items-center gap-3" data-testid="brand-link">
-    <span className="flex h-10 w-10 items-center justify-center rounded-[var(--wp-radius-md)] bg-white/10">
-      <Mascot className="h-8 w-8" />
-    </span>
-    {!compact ? (
-      <span className="min-w-0">
-        <span className="wp-display block text-sm font-bold leading-tight text-white">Western Park</span>
-        <span className="block truncate text-[11px] text-white/70">Classroom Platform</span>
-      </span>
-    ) : null}
-  </Link>
-);
+const testId = (label) => label.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "");
 
 const NavList = ({ onNavigate }) => {
   const { can, features } = useApp();
@@ -145,40 +149,50 @@ const NavList = ({ onNavigate }) => {
       NAV.map((g) => ({
         ...g,
         items: g.items.filter(
-          (i) =>
-            (!i.permission || can(i.permission)) &&
-            (!i.feature || features[i.feature] !== false)
+          (i) => (!i.permission || can(i.permission)) && (!i.feature || features[i.feature] !== false)
         ),
       })).filter((g) => g.items.length),
     [can, features]
   );
 
   return (
-    <nav className="flex flex-col gap-5" aria-label="Main">
+    <nav className="flex flex-col gap-6" aria-label="Main">
       {groups.map((group) => (
         <div key={group.group}>
-          <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">
+          <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--wp-ink-faint))]">
             {group.group}
           </p>
-          <ul className="space-y-1">
+          <ul className="space-y-0.5">
             {group.items.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
                   end={item.to === "/"}
                   onClick={onNavigate}
-                  data-testid={`nav-${item.label.toLowerCase().replace(/[^a-z]+/g, "-")}`}
+                  data-testid={`nav-${testId(item.label)}`}
                   className={({ isActive }) =>
                     cn(
-                      "flex min-h-[40px] items-center gap-3 rounded-[var(--wp-radius-md)] px-3 py-2 text-sm font-medium transition-colors duration-200",
+                      "relative flex min-h-[44px] items-center gap-3 rounded-[var(--wp-radius-md)] px-3 py-2 text-sm font-medium",
+                      "transition-[background-color,color] duration-150 ease-out",
                       isActive
-                        ? "bg-white text-[hsl(var(--wp-aubergine))]"
-                        : "text-white/80 hover:bg-white/10 hover:text-white"
+                        ? "bg-[hsl(var(--wp-primary-soft))] font-semibold text-[hsl(var(--wp-primary-700))]"
+                        : "text-[hsl(var(--wp-ink-muted))] hover:bg-[hsl(var(--wp-surface-sunken))] hover:text-[hsl(var(--wp-ink))]"
                     )
                   }
                 >
-                  <item.icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-                  <span className="truncate">{item.label}</span>
+                  {({ isActive }) => (
+                    <>
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          "absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-r-full",
+                          isActive ? "bg-[hsl(var(--wp-primary))]" : "bg-transparent"
+                        )}
+                      />
+                      <item.icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+                      <span className="truncate">{item.label}</span>
+                    </>
+                  )}
                 </NavLink>
               </li>
             ))}
@@ -190,50 +204,55 @@ const NavList = ({ onNavigate }) => {
 };
 
 export const StaffShell = ({ children }) => {
-  const { user, signOut, can, togglePupilMode } = useApp();
+  const { user, settings, signOut, can, togglePupilMode } = useApp();
   const [menuOpen, setMenuOpen] = useState(false);
   const [obsOpen, setObsOpen] = useState(false);
   const location = useLocation();
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayIso();
 
   const mobileItems = NAV.flatMap((g) => g.items).filter(
     (i) => MOBILE_PRIMARY.includes(i.to) && (!i.permission || can(i.permission))
+  );
+
+  const brand = (
+    <Link to="/" className="block" data-testid="brand-link">
+      <FrithWordmark subtitle={settings?.classroom_name || "Western Park DSP"} size="md" />
+    </Link>
   );
 
   return (
     <div className="min-h-screen bg-[hsl(var(--wp-surface-cream))]">
       {/* desktop sidebar */}
       <aside
-        className="fixed inset-y-0 left-0 z-30 hidden w-[248px] flex-col overflow-y-auto bg-[hsl(var(--wp-aubergine))] px-4 py-5 lg:flex"
+        className="fixed inset-y-0 left-0 z-sidebar hidden w-[252px] flex-col overflow-y-auto border-r border-[hsl(var(--border))] bg-[hsl(var(--wp-surface-ivory))] px-3 py-5 lg:flex"
         data-testid="sidebar"
       >
-        <div className="mb-6 px-1">
-          <Brand />
-        </div>
+        <div className="mb-7 px-2">{brand}</div>
         <NavList />
-        <div className="mt-auto pt-6">
+        <div className="mt-auto space-y-3 px-1 pt-7">
           <button
             type="button"
             onClick={() => togglePupilMode(true)}
-            className="flex w-full items-center gap-3 rounded-[var(--wp-radius-md)] bg-white/10 px-3 py-2.5 text-left text-sm font-medium text-white transition-colors duration-200 hover:bg-white/20"
+            className="flex w-full min-h-[44px] items-center gap-3 rounded-[var(--wp-radius-md)] border border-[hsl(var(--wp-primary)/0.25)] bg-[hsl(var(--card))] px-3 py-2.5 text-left text-sm font-semibold text-[hsl(var(--wp-primary-700))] transition-[background-color,border-color] duration-150 hover:bg-[hsl(var(--wp-primary-soft))]"
             data-testid="start-pupil-mode"
           >
             <Monitor className="h-[18px] w-[18px]" aria-hidden="true" />
             Pupil-facing mode
           </button>
+          <SchoolIdentity className="px-2" />
         </div>
       </aside>
 
-      <div className="lg:pl-[248px]">
+      <div className="lg:pl-[252px]">
         {/* header */}
-        <header className="sticky top-0 z-20 border-b border-[hsl(var(--border))] bg-[hsl(var(--wp-surface-cream))]/95 backdrop-blur">
-          <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
+        <header className="sticky top-0 z-sticky border-b border-[hsl(var(--border))] bg-[hsl(var(--wp-surface-cream))]/92 backdrop-blur">
+          <div className="mx-auto flex max-w-[1440px] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
             <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="outline"
                   size="icon"
-                  className="lg:hidden"
+                  className="h-11 w-11 lg:hidden"
                   aria-label="Open menu"
                   data-testid="open-menu"
                 >
@@ -242,20 +261,21 @@ export const StaffShell = ({ children }) => {
               </SheetTrigger>
               <SheetContent
                 side="left"
-                className="w-[280px] overflow-y-auto border-none bg-[hsl(var(--wp-aubergine))] p-5"
+                className="w-[290px] overflow-y-auto border-r border-[hsl(var(--border))] bg-[hsl(var(--wp-surface-ivory))] p-4"
                 data-testid="mobile-menu"
               >
-                <SheetHeader className="mb-5 text-left">
-                  <SheetTitle className="text-white">
-                    <Brand />
+                <SheetHeader className="mb-6 text-left">
+                  <SheetTitle asChild>
+                    <div>{brand}</div>
                   </SheetTitle>
                 </SheetHeader>
                 <NavList onNavigate={() => setMenuOpen(false)} />
+                <SchoolIdentity className="mt-8 px-2" />
               </SheetContent>
             </Sheet>
 
             <div className="min-w-0 flex-1">
-              <p className="truncate text-xs font-medium text-[hsl(var(--wp-ink-muted))]">
+              <p className="truncate text-[11px] font-semibold uppercase tracking-[0.12em] text-[hsl(var(--wp-ink-faint))]">
                 {formatLongDate(today)}
               </p>
               <p className="wp-display truncate text-sm font-bold text-[hsl(var(--wp-ink))]">
@@ -264,7 +284,11 @@ export const StaffShell = ({ children }) => {
             </div>
 
             {can("observation.create") ? (
-              <Button onClick={() => setObsOpen(true)} className="gap-2" data-testid="header-add-observation">
+              <Button
+                onClick={() => setObsOpen(true)}
+                className="min-h-[44px] gap-2"
+                data-testid="header-add-observation"
+              >
                 <Plus className="h-4 w-4" aria-hidden="true" />
                 <span className="hidden sm:inline">Observation</span>
               </Button>
@@ -272,14 +296,20 @@ export const StaffShell = ({ children }) => {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="gap-2" data-testid="user-menu">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[hsl(var(--wp-teal-100))] text-[11px] font-bold text-[hsl(var(--wp-teal-600))]">
-                    {(user?.name || "?").slice(0, 1)}
+                <Button variant="outline" className="min-h-[44px] gap-2" data-testid="user-menu">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(var(--wp-primary-soft))] text-[11px] font-bold text-[hsl(var(--wp-primary-700))]">
+                    {(user?.name || "?")
+                      .split(" ")
+                      .map((p) => p[0])
+                      .slice(0, 2)
+                      .join("")}
                   </span>
-                  <span className="hidden max-w-[120px] truncate sm:inline">{user?.name}</span>
+                  <span className="hidden max-w-[130px] truncate font-semibold sm:inline">
+                    {user?.name}
+                  </span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuContent align="end" className="w-60">
                 <DropdownMenuLabel className="font-normal">
                   <p className="font-semibold">{user?.name}</p>
                   <p className="text-xs text-[hsl(var(--wp-ink-muted))]">{user?.email}</p>
@@ -298,7 +328,7 @@ export const StaffShell = ({ children }) => {
 
         <main
           key={location.pathname}
-          className="mx-auto max-w-[1400px] px-4 pb-28 pt-6 sm:px-6 lg:px-8 lg:pb-10"
+          className="mx-auto max-w-[1440px] px-4 pb-28 pt-[var(--wp-gap)] sm:px-6 lg:px-8 lg:pb-12"
         >
           {children}
         </main>
@@ -306,7 +336,7 @@ export const StaffShell = ({ children }) => {
 
       {/* mobile bottom tabs */}
       <div
-        className="fixed inset-x-0 bottom-0 z-30 border-t border-[hsl(var(--border))] bg-white/95 backdrop-blur lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-sidebar border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/96 backdrop-blur lg:hidden"
         data-testid="bottom-tabs"
       >
         <div className="flex items-stretch justify-around px-1 py-1.5">
@@ -317,11 +347,13 @@ export const StaffShell = ({ children }) => {
               end={item.to === "/"}
               className={({ isActive }) =>
                 cn(
-                  "flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-[var(--wp-radius-md)] px-1 text-[10px] font-medium",
-                  isActive ? "text-[hsl(var(--wp-teal))]" : "text-[hsl(var(--wp-ink-muted))]"
+                  "flex min-h-[48px] min-w-[44px] flex-1 flex-col items-center justify-center gap-0.5 rounded-[var(--wp-radius-md)] px-1 text-[10px] font-semibold",
+                  isActive
+                    ? "bg-[hsl(var(--wp-primary-soft))] text-[hsl(var(--wp-primary-700))]"
+                    : "text-[hsl(var(--wp-ink-muted))]"
                 )
               }
-              data-testid={`tab-${item.label.toLowerCase().replace(/[^a-z]+/g, "-")}`}
+              data-testid={`tab-${testId(item.label)}`}
             >
               <item.icon className="h-5 w-5" aria-hidden="true" />
               <span className="truncate">{item.label}</span>
@@ -330,7 +362,7 @@ export const StaffShell = ({ children }) => {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-medium text-[hsl(var(--wp-ink-muted))]"
+            className="flex min-h-[48px] min-w-[44px] flex-1 flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-semibold text-[hsl(var(--wp-ink-muted))]"
             data-testid="tab-more"
           >
             <Menu className="h-5 w-5" aria-hidden="true" />

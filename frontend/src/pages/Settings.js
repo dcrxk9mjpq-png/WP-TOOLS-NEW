@@ -79,7 +79,7 @@ export default function Settings() {
                   className={cn(
                     "flex w-full items-center gap-3 rounded-[var(--wp-radius-md)] px-3 py-2.5 text-left text-sm font-medium transition-colors duration-200",
                     panel === p.key
-                      ? "bg-[hsl(var(--wp-teal-100))] text-[hsl(var(--wp-teal-600))]"
+                      ? "bg-[hsl(var(--wp-primary-soft))] text-[hsl(var(--wp-primary-700))]"
                       : "hover:bg-[hsl(var(--muted))]"
                   )}
                   data-testid={`settings-tab-${p.key}`}

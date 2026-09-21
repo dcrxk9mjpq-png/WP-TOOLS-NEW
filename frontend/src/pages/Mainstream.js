@@ -85,7 +85,7 @@ export default function Mainstream() {
                   {section.items?.length ? (
                     section.items.map((item, i) => (
                       <li key={i} className="flex gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--wp-teal))]" />
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--wp-primary))]" />
                         {item}
                       </li>
                     ))

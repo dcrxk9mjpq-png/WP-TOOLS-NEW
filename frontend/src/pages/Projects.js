@@ -174,7 +174,7 @@ export default function Projects() {
                 <ul className="space-y-1.5">
                   {(project.evidence || []).map((e) => (
                     <li key={e.id} className="flex items-start gap-2 text-sm">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--wp-teal))]" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--wp-primary))]" />
                       <span className="min-w-0 flex-1">{e.text}</span>
                       <span className="shrink-0 text-xs text-[hsl(var(--wp-ink-muted))]">
                         {formatTimeAgo(e.at)}
@@ -287,7 +287,7 @@ export default function Projects() {
                       }
                       className={cn(
                         "rounded-full border px-3 py-1.5 text-sm",
-                        on ? "border-[hsl(var(--wp-teal))] bg-[hsl(var(--wp-teal-100))]" : "border-[hsl(var(--border))]"
+                        on ? "border-[hsl(var(--wp-primary))] bg-[hsl(var(--wp-primary-soft))]" : "border-[hsl(var(--border))]"
                       )}
                       data-testid="project-pupil-toggle"
                     >

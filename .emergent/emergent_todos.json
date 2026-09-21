@@ -1,42 +1,38 @@
 [
   {
-    "content": "Phase 1: POC - Widgit symbol extraction from PPTX into canonical symbol set",
+    "content": "Backend: ElevenLabs TTS engine + /api/tts router + settings/pupil voice + branding & clock migrations",
     "status": "completed"
   },
   {
-    "content": "Phase 1: POC - Mongo storage + FastAPI serving of symbols, canonical resolver",
+    "content": "Design system overhaul: tokens, tailwind, Brand, common.js, both shells, Symbol, button/input, sonner, SignIn, Today",
     "status": "completed"
   },
   {
-    "content": "Phase 1: POC - ARASAAC gap-fill fetch with graceful fallback",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 1: POC - Auth + role permissions + 4-layer data model write/read",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 1: Run test_core.py until all POC user stories pass (67/67)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: Design guidelines from design_agent (Project Spark identity)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: Backend - all 17 routers + seed sample data",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: Frontend - shell, nav, global Symbol renderer, all 18 screens",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: All user stories covered in development",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: End to End Testing using Testing Agent",
+    "content": "Watch library backend: /api/watch CRUD, youtube/vimeo/playlist/channel embed resolution, seed morning song + Alphablocks + Numberblocks + PPT break videos",
     "status": "in_progress"
+  },
+  {
+    "content": "Watch staff page + Today 'Watch' tile; Brain Breaks becomes guided-only and points at Watch",
+    "status": "pending"
+  },
+  {
+    "content": "Pupil mode redesign: clay pastel tiles, Now/My day/I can say/How I feel/Watch/Brain break/Sparks",
+    "status": "pending"
+  },
+  {
+    "content": "Wire SpeakButton into Communication, Regulation, Morning Meeting, Timetable",
+    "status": "pending"
+  },
+  {
+    "content": "Settings: Voice section (class voice, model, per-pupil voice, preview, cache) + pupil theme picker",
+    "status": "pending"
+  },
+  {
+    "content": "Fix Morning Meeting initialisation bug + audit accessibility settings across screens",
+    "status": "pending"
+  },
+  {
+    "content": "Screenshots of both pupil themes for the user to choose + testing agent regression",
+    "status": "pending"
   }
 ]

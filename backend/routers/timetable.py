@@ -13,6 +13,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
+from core import dayclock
 from core.db import C, get_db
 from core.security import current_user, require
 from core.util import new_id, serialize_doc, serialize_docs, today_iso, utcnow_iso
@@ -195,18 +196,10 @@ async def _get_day(date: str) -> dict:
 
 
 def _decorate(day: dict) -> dict:
-    items = day.get("items", [])
-    current = next((i for i in items if i.get("status") == "current"), None)
-    idx = items.index(current) if current else -1
-    open_after = [
-        i for n, i in enumerate(items) if n > idx and i.get("status") not in {"done", "skipped"}
-    ]
+    """Attach NOW / NEXT / LATER using staff decisions first, then the clock."""
+    state = dayclock.derive(day.get("items", []), day.get("date") or today_iso())
     day = dict(day)
-    day["now"] = current
-    day["next"] = open_after[0] if open_after else None
-    day["later"] = open_after[1:]
-    done = len([i for i in items if i.get("status") == "done"])
-    day["progress"] = {"done": done, "total": len(items)}
+    day.update(state)
     return day
 
 
@@ -374,21 +367,45 @@ async def set_status(
 
 @router.post("/day/advance")
 async def advance_day(date: str | None = None, user: dict = Depends(require("timetable.edit"))):
+    """Finish whatever is happening now and start whatever is next.
+
+    "Now" is taken from the same derivation the screens use, so pressing this
+    does the obvious thing whether the day is being driven by the clock or by a
+    member of staff.
+    """
     db = get_db()
     d = date or today_iso()
     day = await _get_day(d)
     items = day.get("items", [])
-    idx = next((n for n, i in enumerate(items) if i.get("status") == "current"), None)
-    if idx is None:
-        nxt = next((n for n, i in enumerate(items) if i.get("status") == "later"), None)
-        if nxt is not None:
-            items[nxt]["status"] = "current"
-    else:
-        items[idx]["status"] = "done"
-        if idx + 1 < len(items):
-            items[idx + 1]["status"] = "current"
+    state = dayclock.derive(items, d)
+    now_id = (state.get("now") or {}).get("id")
+    next_id = (state.get("next") or {}).get("id")
+    for item in items:
+        if item["id"] == now_id:
+            item["status"] = "done"
+        elif item["id"] == next_id:
+            item["status"] = "current"
     await db[C.daily].update_one({"date": d}, {"$set": {"items": items, "updated_at": utcnow_iso()}})
     return serialize_doc(_decorate({**day, "items": items}))
+
+
+@router.post("/day/follow-clock")
+async def follow_clock(date: str | None = None, user: dict = Depends(require("timetable.edit"))):
+    """Hand the day back to the clock.
+
+    Clears a staff "happening now" override without touching anything already
+    marked finished or skipped.
+    """
+    db = get_db()
+    d = date or today_iso()
+    day = await _get_day(d)
+    for item in day.get("items", []):
+        if item.get("status") == "current":
+            item["status"] = "later"
+    await db[C.daily].update_one(
+        {"date": d}, {"$set": {"items": day["items"], "updated_at": utcnow_iso()}}
+    )
+    return serialize_doc(_decorate(day))
 
 
 class ResetIn(BaseModel):

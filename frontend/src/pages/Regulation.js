@@ -210,7 +210,7 @@ export default function Regulation() {
                     className={cn(
                       "flex cursor-pointer items-center gap-2 rounded-[var(--wp-radius-lg)] border p-2 text-sm",
                       supports.includes(s.id)
-                        ? "border-[hsl(var(--wp-teal))] bg-[hsl(var(--wp-teal-100))]"
+                        ? "border-[hsl(var(--wp-primary))] bg-[hsl(var(--wp-primary-soft))]"
                         : "border-[hsl(var(--border))] bg-white"
                     )}
                   >

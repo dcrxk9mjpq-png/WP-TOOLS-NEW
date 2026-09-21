@@ -28,6 +28,7 @@ PUPIL_FIELDS = [
     "group_ids",
     "active",
     "pronouns",
+    "tts",
 ]
 
 

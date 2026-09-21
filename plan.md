@@ -1,96 +1,290 @@
-# Western Park Classroom Platform — build plan (living document)
+# Frith Classroom — build plan (living document)
 
 ## Status
 - **Phase 1 — Core POC: COMPLETE ✅** (`/app/test_core.py`, 67/67 checks passing)
 - **Phase 2 — First Build Deliverable (spec §34): IN PROGRESS**
-- Phase 3+ — expansion: not started
+  - Backend routers: already implemented ✅ (auth, symbols, timetable, pupils, morning_meeting, communication, interaction, regulation, prepare_me, jobs/pickers, observations/sparks, projects, mainstream, today, settings)
+  - Canonical symbols: extracted + served ✅ (178 canonical set)
+  - **Completed in this continuation session (major)**
+    - ElevenLabs TTS: **implemented end-to-end** ✅
+      - Backend: `core/tts.py`, `routers/tts.py`, `.env` config, disk cache in `backend/assets/tts` (gitignored)
+      - Curated UK voices (key is TTS-only; cannot list voices/quota)
+      - Frontend: `lib/speech.js` (server TTS → device fallback), `SpeakButton` components
+    - Timetable NOW/NEXT/LATER: **clock-derived logic implemented** ✅
+      - Backend: `core/dayclock.py`, London timezone (`Europe/London`) in `core/util.py`
+      - Timetable router `_decorate()` and `/api/today` now use derivation; manual override still wins
+    - Brain Breaks: **backend + staff UI implemented** ✅
+      - Backend: `routers/brain_breaks.py` with guided + video support
+      - Seed: 5 guided breaks
+      - Frontend: `components/BrainBreakRunner.js`, `pages/BrainBreaks.js`
+    - Branding + UI foundations: **implemented** ✅
+      - Tokens + typography rewritten in `frontend/src/index.css`
+      - Tailwind/shadcn theme rewritten in `frontend/tailwind.config.js`
+      - Shared component vocabulary restyled in `frontend/src/components/common.js`
+      - StaffShell + PupilShell rewritten
+      - Sign-in page rebranded to **Frith Classroom** + school identity
+  - **Phase 2 still needs consolidation**
+    - Wire SpeakButton consistently across Communication / Morning Meeting / Regulation / Pupil screens (some screens still not updated)
+    - Finish “Brain Breaks” pupil-facing entry point + ensure it’s discoverable from Today
+    - Ensure Settings UI exposes TTS voice selection and pupil theme selection
 
 ---
 
 ## What Phase 1 proved (do not regress these)
-1. **Canonical Symbol System** — 178 symbols. 70 are the school's OWN Widgit symbols,
-   individually cropped out of the supplied *Morning Meeting / Crew Time* PowerPoint
-   (`/app/backend/tools/build_symbol_assets.py` → `/app/backend/assets/symbols/`).
-   108 are ARASAAC (CC BY-NC-SA) gap-fill for concepts the deck does not cover.
-2. One concept → exactly one symbol. Screens ask for a `conceptKey`; they never pick artwork.
-   Replacing a symbol once changes it everywhere; it can be reset or re-assigned.
-3. Email+password auth with **configurable roles** (7 seeded, all editable, new roles creatable).
-   Read-only roles, pupil-scoped visibility, and a separate **Pupil-facing mode**.
+1. **Canonical Symbol System** — 178 symbols.
+   - 70 are the school’s own Widgit symbols cropped from the supplied PowerPoint.
+   - 108 are ARASAAC (CC BY‑NC‑SA) gap-fill.
+2. One concept → exactly one symbol. Screens request `conceptKey`; they never choose artwork.
+3. Email+password auth with **configurable roles** and a separate **Pupil-facing mode**.
 4. **Four separated layers** verified by test:
-   - CLASSROOM CONFIGURATION (activity library, templates) is untouched by day edits
-   - DAILY CLASSROOM CONTENT is per-date and independent (Mon ≠ Tue ≠ special event)
-   - INDIVIDUAL PUPIL CONFIGURATION (support sequences, visibility) never alters the class day
-5. Timetable mechanics: NOW / NEXT / LATER derived automatically, advance, insert, duplicate,
-   reorder, delete, reset, save-day-as-new-template.
+   - SYSTEM STRUCTURE (code)
+   - CLASSROOM CONFIGURATION
+   - DAILY CLASSROOM CONTENT
+   - INDIVIDUAL PUPIL CONFIGURATION
+5. Timetable mechanics: NOW / NEXT / LATER workflow, advance, insert, duplicate, reorder, delete, reset.
 
 ### Deck facts to preserve
-- The routine is called **CREW Time**: Greeting and Check In → Expectations → Calendar →
-  Weather → Timetable → Movement → Calming.
-- Expectations: **Be Kind** (say kind words / focus on yourself / use an inside voice),
-  **Work Hard** (complete the tasks / listen to the teachers / try your best),
-  **Be Responsible** (stay in your seat / walk inside / raise your hand).
-- Zones of Regulation (Blue / Green / Yellow / Red) + "When I feel annoyed" strategy cards.
-- Calendar: Day / Date / Month / Year, weekday + month cards. Weather: "How's the weather today?"
+- Routine name: **CREW Time**: Greeting and Check In → Expectations → Calendar → Weather → Timetable → Movement → Calming.
+- Expectations:
+  - **Be Kind** (say kind words / focus on yourself / use an inside voice)
+  - **Work Hard** (complete the tasks / listen to the teachers / try your best)
+  - **Be Responsible** (stay in your seat / walk inside / raise your hand)
+- Zones of Regulation: Blue / Green / Yellow / Red + “When I feel annoyed” strategy cards.
+- Calendar: Day / Date / Month / Year, weekday + month cards. Weather prompt preserved.
 
 ---
 
-## Phase 2 — First Build Deliverable (spec §34)
+## Phase 2 — First Build Deliverable (spec §34) (UPDATED)
+
+### Branding & identity (P0)
+- App/product name: **Frith Classroom** (from Old English *friþ* = peace/sanctuary; also in the school name).
+- School identity text (replace mascot/smiley): **“Braunstone Frith Primary School, Leicester”**.
+- Demo staff display name: **“Ashley Gert”** (replace “Sam”).
+- Logo mark: hand-written SVG (no image assets): soft squircle containing 3 stacked rounded bars (Now/Next/Later), top bar highlighted.
 
 ### Backend (FastAPI + MongoDB, `/api` prefix)
-Done: `core/` (db, util, security, permissions), `routers/auth.py`, `routers/symbols.py`,
-`routers/timetable.py`, `seed.py` (full sample data for every module).
+Already done ✅: `core/` (db, util, security, permissions), routers, seed.
 
-Still to add as routers:
-- `pupils.py` — pupils, avatars, access-controlled photo upload/serve, groups, profiles, targets
-- `morning_meeting.py` — configurable component sequence + run state + check-ins + weather
-- `communication.py` — categories/options CRUD, reorder, usage log
-- `regulation.py` — zones, strategies, per-pupil supports, regulation log
-- `prepare_me.py` — templates (sections/wording) + individual stories
-- `jobs.py` — jobs CRUD/reorder, assignment, rotate, random, reset
-- `pickers.py` — picker CRUD, spin with no-immediate-repeat, history, reset
-- `observations.py` — quick observation create/list + progress patterns
-- `sparks.py` — rules, events, badges, class goal, leaderboard-free totals
-- `projects.py` — Project Spark
-- `interaction.py` — interaction areas + Blank's Levels prompts/records
-- `settings.py` — global settings, appearance, features, expectations, profile sections
-- `today.py` — single uncluttered payload for the Today screen
-- `mainstream.py` — permission-limited concise support summary
+#### P0 — ElevenLabs TTS integration (COMPLETE ✅)
+Goal: natural British English speech for Communication, Morning Meeting, Now/Next/Later, Brain Break runner, etc.
 
-### Frontend (React + Tailwind + shadcn/ui, Project Spark identity)
-- Global `Symbol` component that renders ONLY from a `conceptKey` (enforces the Consistency Rule)
-- Staff shell (sidebar + header) and Pupil-facing shell (large tab bar, low distraction)
-- Screens: Today, Timetable, Morning Meeting, Communication, Interaction, Regulation,
-  Prepare Me, Jobs, Pickers, Pupils + Profile, Quick Observation, Progress, Sparks,
-  Project Spark, Mainstream Bridge, Settings (incl. Symbol Library), Sign in
-- Sample-data banner + `Sample` badges; reduce-motion + density + font-scale settings
+Constraints confirmed:
+- API key is **restricted**: TTS works, but `voices_read` and `user_read` return 401 → **no dynamic voice listing** and **no quota/subscription screen**.
 
-### User stories to satisfy (test these)
-1. As a teacher at 08:30 I can load a template, rename an activity and add a movement break — without changing the template.
-2. As a teacher I can run Morning Meeting through the CREW Time sequence, skip a component and reorder it live.
-3. As a pupil-facing display I see only NOW / NEXT with the same symbols and nothing sensitive.
-4. As staff I can tap a communication card and hear it spoken aloud.
-5. As staff I can record a quick observation in under 15 seconds.
-6. As an administrator I can rename/delete any job, picker, communication choice or Spark rule.
-7. As an administrator I can replace one symbol and see it change on every screen.
-8. As a teacher I can prepare a pupil for an assembly with a Prepare Me story.
-9. As a teacher I can pick a random child with no immediate repeat, using avatars not photos.
-10. As a leader I can see progress patterns without any behaviour score.
+Implemented:
+1. **Secrets & config**
+   - `ELEVENLABS_API_KEY` in `/app/backend/.env`.
+   - `TTS_CACHE_DIR=/app/backend/assets/tts` (gitignored).
+2. **TTS module**: `/app/backend/core/tts.py`
+   - Normalises text, caps length, disk cache by sha256(model|voice|text)
+   - Safe failure mode: raises `TTSUnavailable` so frontend can fall back
+3. **API**: `/app/backend/routers/tts.py`
+   - `GET /api/tts/status` (frontend capability + curated voices/models)
+   - `POST /api/tts/speak` → `audio/mpeg` with cache headers
+   - Cache admin endpoints for settings admins
+4. **Curated UK voices (verified live)**
+   - Lily `pFZP5JQG7iQjIQuC4Bku` (female warm, default)
+   - Alice `Xb7hH8MSUJpSbSDYk0k2` (female clear)
+   - George `JBFqnCBsd6RMkjVDRZzb` (male warm)
+   - Daniel `onwK4e9ZLuTAKqWW03F9` (male calm)
+5. **Settings storage**
+   - Global settings seeded now include `tts: { enabled, voice, model_id, autoplay_now_next }`
+   - Pupil model supports `pupil.tts: { enabled, voice }` (backend accepts it)
 
-**Phase 2 ends with `testing_agent_v3` end-to-end testing.**
+Remaining work (P0):
+- Build the staff Settings UI for:
+  - class default voice/model
+  - per-pupil voice
+  - a “Preview voice” button
 
 ---
 
-## Phase 3 — Expansion (after V1 sign-off)
-1. Blank's Levels recording inside observations + planning
-2. Evidence & Progress pattern views (reduced prompting, increased independence)
-3. Project Spark portfolio/evidence media
-4. Mainstream Bridge print/share view
-5. Roles editor UI + audit log viewer
-6. Separated (inert) integration layer placeholder for a future official ClassDojo API
+### Frontend (React + Tailwind + shadcn/ui)
+Already done ✅: 18 screens, StaffShell + PupilShell, symbol renderer.
+
+#### P0 — Complete UI/Visual overhaul (IN PROGRESS, foundations done ✅)
+Objective: look “finished”, professional, school-appropriate; child mode playful but calm.
+
+Non-negotiables:
+- **No purple**.
+- No decorative animations/gradients; respect `data-animation` + prefers-reduced-motion.
+- Accessibility controls must affect every screen: density, contrast, font scale.
+
+Implemented:
+1. **Tokens & typography**
+   - `/app/frontend/src/index.css` rewritten:
+     - Staff: muted green accent, restrained red.
+     - Display font: **Montserrat**; Body: **Figtree**; Pupil: **Fredoka**.
+     - `data-mode="staff|pupil"` and `data-pupil-theme="pastel|bold"`.
+2. **Shared component vocabulary**
+   - `/app/frontend/src/components/common.js` rewritten to propagate the new look.
+3. **Shells**
+   - `/app/frontend/src/components/Shell.js` and `/app/frontend/src/components/PupilShell.js` rewritten.
+4. **Brand components**
+   - `/app/frontend/src/components/Brand.js` with SVG logo + school identity.
+5. **Symbol presentation**
+   - `/app/frontend/src/components/Symbol.js` now uses symbol “plates” for Widgit line art.
+6. **Toasts**
+   - Sonner palette mapped to platform tokens.
+
+Remaining work (P0):
+- Produce screenshots for **both** pupil themes (“pastel” and “bold”) and let the user choose.
+- Systematically sweep remaining pages for any lingering pre-overhaul styling.
+
+---
+
+## Phase 3 — Logic & QA fixes (P1 → some already completed)
+
+### Timetable “Happening Now” logic (clock-derived) (COMPLETE ✅)
+Required behaviour:
+- Derive NOW/NEXT from clock using **Europe/London** timezone.
+- Preserve manual overrides.
+
+Implemented:
+- Backend:
+  - `core/util.py` now defines `SCHOOL_TZ = Europe/London`, `today_iso()` uses school date.
+  - `core/dayclock.py` derives NOW/NEXT/LATER with `now_source` (clock/staff/none).
+  - `routers/timetable.py` `_decorate()` and advance/follow-clock endpoints updated.
+  - `routers/platform.py` `/api/today` uses derivation.
+
+Frontend remaining check (P1):
+- Confirm Today/Timetable screens show `now_source` appropriately and don’t reintroduce UTC date bugs.
+
+### Morning Meeting initialisation bug (P1)
+- Still pending.
+- Fix state initialisation and `data-testid` naming issues flagged by `testing_agent_v3`.
+
+### Accessibility enforcement (P1)
+- Audit all pages for:
+  - font scale multiplier affecting layout
+  - density affecting spacing
+  - high contrast increasing borders/text contrast
+  - `data-animation="none"` removing motion
+
+### Pupil-facing simplification (P1)
+- Ensure pupil screens are:
+  - large targets (≥80px), minimal text, consistent symbol framing
+  - no staff-only content, no editing, no cognitive overload
+
+---
+
+## Phase 4 — Brain Breaks + Watch (Mindfulness / Movement / Videos) (P1)
+
+User choice confirmed earlier: **Both** built-ins + staff-managed video link library.
+
+### NEW user request (verbatim intent)
+1. Add a tab/button on the main page with the day’s selection of children’s videos (BBC or YouTube) for **transition periods**.
+2. **Alphablocks** and **Numberblocks** must be included.
+3. Morning routine starts with a **Morning Song** that is linked in the uploaded PowerPoint.
+4. Later: Morning Meeting must reproduce the full PPT slide order + integrate “Makaton Sign of the Week” (user wants planning discussion first).
+
+### Extracted from uploaded PPTX (facts now known)
+The three YouTube links embedded in `/app/backend/assets/source/morning_meeting.pptx` are:
+- Slide 1: **Good Morning Song — The Kiboomers** (Morning song) → `TFVjU-dsIM8`
+- Slide 30: Movement break → `8v1Xb186kH8`
+- Slide 32: Calming break → `PWJAmyhxmVc`
+(All verified live via YouTube oEmbed.)
+
+Verified official learning channels/playlists:
+- Alphablocks uploads playlist: `UU_qs3c0ehDvZkbiEbOj6Drg`
+- Numberblocks uploads playlist: `UUPlwvN0w4qFSP1FllALB92w`
+- Verified example videos:
+  - Numberblocks “The Number One” `7APNVVdrx5M`
+  - Alphablocks & Numberblocks “First Meet” `JDOVK-oyu6M`
+
+### Revised architecture decision (P1): one place for all video content = **Watch**
+To avoid two competing video libraries (Brain Breaks vs elsewhere), we will introduce **Watch** as the single management + playback surface for all classroom videos.
+
+**Design decision:**
+- **Watch** at:
+  - Backend: `/api/watch` (NEW)
+  - Staff: `/watch` (NEW)
+  - Pupil: `/pupil/watch` (NEW)
+- Content types (`kind`):
+  - `video` (YouTube/Vimeo URL)
+  - `playlist` (YouTube playlist)
+  - `channel` (opens externally; cannot embed cleanly)
+- Collections/tags (`collection`):
+  - `morning_song`, `learning`, `movement`, `calm`, `story`, `other`
+- `featured` flag:
+  - “On today’s board” → surfaced on Today + Pupil Watch
+- Embedding rules:
+  - Use `youtube-nocookie.com` embeds
+  - `rel=0`, `modestbranding=1`, `playsinline=1`
+  - If cannot embed: open in a new tab with a clear message
+
+**Implications:**
+- **Brain Breaks becomes guided-only** (platform-narrated, animated, offline-friendly).
+- The Brain Breaks staff page will:
+  - remove the “Videos” tab
+  - include a clear button “Manage videos in Watch” linking to `/watch`
+
+### Deliverables (P1)
+1. **Watch (videos) — staff-managed library**
+   - CRUD: title, url, kind, collection, duration_seconds, enabled, featured
+   - Seed with:
+     - Morning song from PPT (`TFVjU-dsIM8`) in `morning_song` collection, featured
+     - Alphablocks + Numberblocks items (at least a couple single videos + optional playlist entries)
+2. **Today surface**
+   - Add a “Watch” button/tile on Today (staff) and on pupil home (Now)
+   - Add a “Today’s videos” row showing featured items
+3. **Pupil Watch**
+   - Large clay tiles, minimal text, one-tap play
+   - Full-screen player with stop/close
+
+### BBC content note (must confirm before building)
+BBC iPlayer embedding often requires authentication/region constraints; we can support BBC links as **external links** (open in a new tab) but cannot guarantee in-app embedding.
+
+---
+
+## Phase 5 — Morning Meeting: full PPT parity + Makaton (DEFERRED; plan with user first)
+User request: the Morning Meeting tab must reproduce **all 34 PPT slides**, in **the same order**, including:
+- embedded links
+- links to the Makaton website and auto-pull “Sign of the Week”
+
+This is a large piece of work and the user explicitly said: “We can lay this out properly when you are ready.”
+
+Before building, ask and confirm:
+- Which Makaton source is approved for “Sign of the Week” (official endpoint / page)?
+- Whether you want:
+  - a weekly cached screenshot + link, or
+  - a direct embed/webview (often blocked), or
+  - a staff-curated link entry in Watch
+
+---
+
+## Return to the user’s earlier “FINAL POLISH & QA” 17-point checklist (P1/P0 mix)
+After Voice + UI overhaul consolidation + Watch + core logic + Brain Breaks are in place, revisit the original checklist and adjust it to incorporate:
+- ElevenLabs voice pipeline
+- Two-mode design system + pupil theme selection
+- School branding + demo identity updates
+- Watch video library + morning song
+
+---
+
+## Testing & sign-off gates
+- Backend tests:
+  - Add integration tests for:
+    - `/api/tts/speak` (success + cache-hit + missing key → 503)
+    - `/api/watch` CRUD and embed parsing
+    - `/api/today` includes `now_source` and correct date handling
+- Frontend verification:
+  - Screenshot comparisons:
+    - Sign-in (brand)
+    - Staff shell + Today (new Now card + Watch surface)
+    - Communication board (SpeakButton states)
+    - Pupil mode (Now / Talk / Feel / Watch) in **pastel** and **bold** pupil themes
+  - Manual flow using seeded credentials
+- Phase 2 ends with `testing_agent_v3` end-to-end regression testing.
+
+---
 
 ## Non-negotiables
 - No hard-coded classroom content. Everything seeded is `is_sample: true` and editable.
 - One concept, one symbol, everywhere. Never substitute artwork on a screen.
-- Reuse established components; do not redesign the same function twice.
-- Data minimisation; pupil photos are access-controlled and off by default per context.
-- Prototype only — sample data must stay clearly labelled.
+- Respect separation: Staff configuration/management vs Pupil-facing low distraction.
+- No corner-cutting:
+  - TTS uses server-side caching.
+  - UI overhaul done via tokens + shared components (clean, consistent).
+  - Accessibility settings demonstrably affect all screens.
+- Prototype only — sample data must remain clearly labelled.

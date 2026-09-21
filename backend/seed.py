@@ -17,7 +17,7 @@ from core.permissions import DEFAULT_ROLES
 from core.security import hash_password
 from core.util import new_id, today_iso, utcnow_iso
 
-SEED_VERSION = 7
+SEED_VERSION = 9
 ASSETS = Path(__file__).resolve().parent / "assets" / "symbols"
 
 
@@ -421,6 +421,272 @@ PROJECTS = [
      ["Plant the seeds", "Water every day", "Measure the growth", "Harvest"]),
 ]
 
+# --------------------------------------------------------------------------- #
+# Brain Breaks - one to two minute guided activities.
+# The platform narrates the "say" line and animates the "pattern" marker.
+# Every one of these is sample content: rename, re-time or delete freely.
+# --------------------------------------------------------------------------- #
+BRAIN_BREAKS: list[dict] = [
+    {
+        "title": "Square breathing",
+        "description": "Breathe in, hold, breathe out, rest. Four times round the square.",
+        "purpose": "calm",
+        "symbol_concept": "regulation.deep_breaths",
+        "colour": "sky",
+        "repeat": 4,
+        "steps": [
+            {"title": "Breathe in", "say": "Breathe in slowly.", "seconds": 4,
+             "pattern": "in", "symbol_concept": "regulation.deep_breaths"},
+            {"title": "Hold", "say": "Hold it.", "seconds": 4,
+             "pattern": "hold", "symbol_concept": "regulation.can_control_myself"},
+            {"title": "Breathe out", "say": "Breathe out slowly.", "seconds": 4,
+             "pattern": "out", "symbol_concept": "regulation.deep_breaths"},
+            {"title": "Rest", "say": "Rest.", "seconds": 4,
+             "pattern": "hold", "symbol_concept": "feeling.calm"},
+        ],
+    },
+    {
+        "title": "Six big breaths",
+        "description": "Long slow breaths in and out. Good before a transition.",
+        "purpose": "calm",
+        "symbol_concept": "regulation.deep_breaths",
+        "colour": "mint",
+        "repeat": 6,
+        "steps": [
+            {"title": "Breathe in", "say": "Breathe in through your nose.", "seconds": 5,
+             "pattern": "in", "symbol_concept": "regulation.deep_breaths"},
+            {"title": "Breathe out", "say": "And breathe out through your mouth.", "seconds": 5,
+             "pattern": "out", "symbol_concept": "feeling.calm"},
+        ],
+    },
+    {
+        "title": "Wake up my body",
+        "description": "A short movement break to use between two sitting-down activities.",
+        "purpose": "move",
+        "symbol_concept": "routine.movement",
+        "colour": "butter",
+        "repeat": 1,
+        "steps": [
+            {"title": "Reach up tall", "say": "Reach up tall, as high as you can.", "seconds": 15,
+             "symbol_concept": "learning.pe"},
+            {"title": "Roll your shoulders", "say": "Roll your shoulders round and round.", "seconds": 15,
+             "symbol_concept": "routine.movement"},
+            {"title": "March on the spot", "say": "March on the spot. Lift your knees up.", "seconds": 20,
+             "symbol_concept": "regulation.walk"},
+            {"title": "Shake your hands", "say": "Shake your hands out. Shake them loose.", "seconds": 15,
+             "symbol_concept": "routine.movement"},
+            {"title": "Stand still and breathe", "say": "Now stand still. One big breath.", "seconds": 15,
+             "pattern": "in", "symbol_concept": "regulation.deep_breaths"},
+        ],
+    },
+    {
+        "title": "Squeeze and let go",
+        "description": "Squeeze tight, then let go. Helps a busy body feel calmer.",
+        "purpose": "calm",
+        "symbol_concept": "regulation.squeeze",
+        "colour": "peach",
+        "repeat": 1,
+        "steps": [
+            {"title": "Squeeze your hands", "say": "Squeeze your hands into tight fists.", "seconds": 10,
+             "symbol_concept": "regulation.squeeze"},
+            {"title": "Let them go", "say": "And let them go. Soft hands.", "seconds": 10,
+             "symbol_concept": "feeling.calm"},
+            {"title": "Squeeze your shoulders", "say": "Squeeze your shoulders up to your ears.", "seconds": 10,
+             "symbol_concept": "regulation.squeeze"},
+            {"title": "Let them go", "say": "And let them go. Soft shoulders.", "seconds": 10,
+             "symbol_concept": "feeling.calm"},
+            {"title": "Squeeze your toes", "say": "Squeeze your toes inside your shoes.", "seconds": 10,
+             "symbol_concept": "regulation.squeeze"},
+            {"title": "Let them go", "say": "And let them go. Well done.", "seconds": 10,
+             "symbol_concept": "feeling.calm"},
+        ],
+    },
+    {
+        "title": "Look, listen, feel",
+        "description": "Notice five things, four sounds and three things you can touch.",
+        "purpose": "focus",
+        "symbol_concept": "regulation.count",
+        "colour": "sage",
+        "repeat": 1,
+        "steps": [
+            {"title": "Find five things you can see", "say": "Find five things you can see. Count them quietly.",
+             "seconds": 20, "symbol_concept": "regulation.count"},
+            {"title": "Find four things you can hear", "say": "Now listen. Find four things you can hear.",
+             "seconds": 20, "symbol_concept": "comm.listen"},
+            {"title": "Find three things you can touch", "say": "Now find three things you can touch.",
+             "seconds": 20, "symbol_concept": "regulation.sensory"},
+        ],
+    },
+]
+
+
+async def seed_brain_breaks() -> int:
+    """Install the sample guided breaks. Videos are not seeded here: every piece
+    of video the classroom uses lives in Watch (``seed_watch``)."""
+    db = get_db()
+    added = 0
+    for order, spec in enumerate(BRAIN_BREAKS):
+        if await db[C.brain_breaks].find_one({"title": spec["title"]}):
+            continue
+        steps = [
+            {
+                "id": new_id(),
+                "title": s["title"],
+                "say": s.get("say", s["title"]),
+                "seconds": s["seconds"],
+                "pattern": s.get("pattern"),
+                "symbol_concept": s.get("symbol_concept", "regulation.calm"),
+            }
+            for s in spec["steps"]
+        ]
+        await db[C.brain_breaks].insert_one(
+            {
+                "id": new_id(),
+                "kind": "guided",
+                "title": spec["title"],
+                "description": spec["description"],
+                "purpose": spec["purpose"],
+                "symbol_concept": spec["symbol_concept"],
+                "colour": spec["colour"],
+                "repeat": spec["repeat"],
+                "steps": steps,
+                "url": "",
+                "duration_seconds": sum(s["seconds"] for s in steps) * spec["repeat"],
+                "order": order,
+                "enabled": True,
+                "is_sample": True,
+                "created_at": utcnow_iso(),
+            }
+        )
+        added += 1
+    return added
+
+
+# --------------------------------------------------------------------------- #
+# Watch - the classroom video library.
+#
+# These are the school's own videos, not a guess: the three YouTube links were
+# read straight out of the Morning Meeting PowerPoint the provision supplied,
+# and the Alphablocks / Numberblocks entries are the official channel upload
+# playlists (a YouTube channel id "UCxxxx" always has a matching uploads
+# playlist "UUxxxx", which is embeddable, so "all of Numberblocks" becomes
+# something a child can actually be offered on the board).
+#
+# Every entry is sample content: rename, re-collect, hide or delete freely.
+# --------------------------------------------------------------------------- #
+WATCH: list[dict] = [
+    {
+        "title": "Good Morning Song",
+        "description": "The song that opens Morning Meeting. Taken from the classroom's own "
+                       "Morning Meeting slides (The Kiboomers).",
+        "collection": "morning_song",
+        "symbol_concept": "resource.good_morning_song",
+        "url": "https://www.youtube.com/watch?v=TFVjU-dsIM8",
+        "duration_seconds": 150,
+        "featured": True,
+    },
+    {
+        "title": "Alphablocks",
+        "description": "Official Alphablocks channel. Phonics and letter sounds — good for a "
+                       "short transition before phonics.",
+        "collection": "learning",
+        "symbol_concept": "activity.phonics",
+        "url": "https://www.youtube.com/channel/UC_qs3c0ehDvZkbiEbOj6Drg",
+        "duration_seconds": 0,
+        "featured": True,
+    },
+    {
+        "title": "Numberblocks",
+        "description": "Official Numberblocks channel. Counting and number — good for a short "
+                       "transition before maths.",
+        "collection": "learning",
+        "symbol_concept": "learning.maths",
+        "url": "https://www.youtube.com/channel/UCPlwvN0w4qFSP1FllALB92w",
+        "duration_seconds": 0,
+        "featured": True,
+    },
+    {
+        "title": "Numberblocks: The Number One",
+        "description": "A single short episode, for when one clip is enough.",
+        "collection": "learning",
+        "symbol_concept": "learning.maths",
+        "url": "https://www.youtube.com/watch?v=7APNVVdrx5M",
+        "duration_seconds": 180,
+        "featured": False,
+    },
+    {
+        "title": "Alphablocks meet Numberblocks",
+        "description": "Both sets of characters together.",
+        "collection": "learning",
+        "symbol_concept": "activity.phonics",
+        "url": "https://www.youtube.com/watch?v=JDOVK-oyu6M",
+        "duration_seconds": 240,
+        "featured": False,
+    },
+    {
+        "title": "Movement break",
+        "description": "The movement break video from the classroom's own Morning Meeting "
+                       "slides (Coach Corey Martin). Check it still suits the time of year.",
+        "collection": "movement",
+        "symbol_concept": "routine.movement",
+        "url": "https://www.youtube.com/watch?v=8v1Xb186kH8",
+        "duration_seconds": 180,
+        "featured": True,
+    },
+    {
+        "title": "Moment of calm",
+        "description": "The calming video from the classroom's own Morning Meeting slides "
+                       "(GriffinOT sensory brain breaks).",
+        "collection": "calm",
+        "symbol_concept": "routine.calming",
+        "url": "https://www.youtube.com/watch?v=PWJAmyhxmVc",
+        "duration_seconds": 180,
+        "featured": True,
+    },
+]
+
+
+async def seed_watch() -> int:
+    db = get_db()
+    added = 0
+    for order, spec in enumerate(WATCH):
+        if await db[C.watch].find_one({"title": spec["title"]}):
+            continue
+        await db[C.watch].insert_one(
+            {
+                "id": new_id(),
+                "enabled": True,
+                "is_sample": True,
+                "created_at": utcnow_iso(),
+                "order": order,
+                **spec,
+            }
+        )
+        added += 1
+    return added
+
+
+async def top_up_role_permissions() -> int:
+    """Grant newly added permissions to existing roles that already hold the
+    matching parent permission, so a live classroom does not silently lose a
+    feature when the platform gains one. Roles remain fully editable.
+    """
+    db = get_db()
+    pairs = [
+        ("regulation.view", "brain_breaks.view"),
+        ("regulation.edit", "brain_breaks.edit"),
+        ("regulation.view", "watch.view"),
+        ("regulation.edit", "watch.edit"),
+    ]
+    changed = 0
+    for parent, child in pairs:
+        result = await db[C.roles].update_many(
+            {"$and": [{"permissions": parent}, {"permissions": {"$ne": child}}]},
+            {"$addToSet": {"permissions": child}},
+        )
+        changed += result.modified_count
+    return changed
+
 
 async def seed_all(force: bool = False) -> dict:
     db = get_db()
@@ -431,6 +697,13 @@ async def seed_all(force: bool = False) -> dict:
 
     # migration: earlier prototypes used a reserved .test email domain
     await db[C.users].delete_many({"email": {"$regex": r"\\.test$"}})
+
+    # migration (v8): the demo teacher account is named after the class teacher
+    await db[C.users].update_one(
+        {"email": "teacher@westernpark.school"}, {"$set": {"name": "Ashley Gert"}}
+    )
+    # migration (v8): new permissions reach roles that already hold the parent
+    await top_up_role_permissions()
 
     # ---------------- roles + staff accounts ---------------- #
     role_ids: dict[str, str] = {}
@@ -485,7 +758,7 @@ async def seed_all(force: bool = False) -> dict:
 
     staff = [
         ("Alex Grant", "admin@westernpark.school", "Classroom Administrator", "westernpark"),
-        ("Sam Teacher", "teacher@westernpark.school", "Teacher", "westernpark"),
+        ("Ashley Gert", "teacher@westernpark.school", "Teacher", "westernpark"),
         ("Jo Assistant", "ta@westernpark.school", "Teaching Assistant", "westernpark"),
         ("Robin Speech", "specialist@westernpark.school", "Specialist Staff", "westernpark"),
         ("Chris Leader", "leader@westernpark.school", "Senior Leader", "westernpark"),
@@ -905,51 +1178,85 @@ async def seed_all(force: bool = False) -> dict:
             }
         )
 
+    # ---------------- brain breaks + watch ---------------- #
+    await seed_brain_breaks()
+    await seed_watch()
+
     # ---------------- settings ---------------- #
-    existing_settings = await db[C.settings].find_one({"id": "global"})
+    DEFAULT_SETTINGS = {
+        "id": "global",
+        "classroom_name": "Western Park DSP",
+        "school_name": "Braunstone Frith Primary School, Leicester",
+        "sample_data": True,
+        "appearance": {
+            "density": "comfortable",
+            "animation": "subtle",
+            "show_photos": True,
+            "high_contrast": False,
+            "font_scale": 1.0,
+            "show_symbol_labels": True,
+            "pupil_theme": "pastel",
+        },
+        "tts": {
+            "enabled": True,
+            "voice": "uk_female_warm",
+            "model_id": "eleven_turbo_v2_5",
+            "autoplay_now_next": False,
+        },
+        "gamification": {
+            "enabled": True,
+            "currency_name": "Sparks",
+            "show_on_today": True,
+            "reset_period": "half_term",
+        },
+        "features": {
+            "morning_meeting": True,
+            "communication": True,
+            "interaction": True,
+            "regulation": True,
+            "brain_breaks": True,
+            "watch": True,
+            "prepare_me": True,
+            "jobs": True,
+            "pickers": True,
+            "observations": True,
+            "projects": True,
+            "mainstream_bridge": True,
+            "classdojo_integration": False,
+        },
+        "pupil_facing": {
+            "show_timetable": True,
+            "show_communication": True,
+            "show_regulation": True,
+            "show_brain_breaks": True,
+            "show_watch": True,
+            "show_sparks": True,
+        },
+        "updated_at": utcnow_iso(),
+    }
+
+    existing_settings = await db[C.settings].find_one({"id": "global"}, {"_id": 0})
     if not existing_settings:
-        await db[C.settings].insert_one(
-            {
-                "id": "global",
-                "classroom_name": "Western Park DSP",
-                "school_name": "Braunstone Frith Primary Academy",
-                "sample_data": True,
-                "appearance": {
-                    "density": "comfortable",
-                    "animation": "subtle",
-                    "show_photos": True,
-                    "high_contrast": False,
-                    "font_scale": 1.0,
-                    "show_symbol_labels": True,
-                },
-                "gamification": {
-                    "enabled": True,
-                    "currency_name": "Sparks",
-                    "show_on_today": True,
-                    "reset_period": "half_term",
-                },
-                "features": {
-                    "morning_meeting": True,
-                    "communication": True,
-                    "interaction": True,
-                    "regulation": True,
-                    "prepare_me": True,
-                    "jobs": True,
-                    "pickers": True,
-                    "observations": True,
-                    "projects": True,
-                    "mainstream_bridge": True,
-                    "classdojo_integration": False,
-                },
-                "pupil_facing": {
-                    "show_timetable": True,
-                    "show_communication": True,
-                    "show_regulation": True,
-                    "show_sparks": True,
-                },
-                "updated_at": utcnow_iso(),
-            }
-        )
+        await db[C.settings].insert_one(dict(DEFAULT_SETTINGS))
+    else:
+        # Only fill in keys this version introduced; never overwrite a choice
+        # the classroom has already made.
+        patch: dict = {}
+        for key, value in DEFAULT_SETTINGS.items():
+            if key in {"id", "updated_at"}:
+                continue
+            if key not in existing_settings:
+                patch[key] = value
+            elif isinstance(value, dict) and isinstance(existing_settings.get(key), dict):
+                missing = {k: v for k, v in value.items() if k not in existing_settings[key]}
+                if missing:
+                    patch[key] = {**existing_settings[key], **missing}
+        # the school's full identity, corrected in v8
+        if existing_settings.get("school_name") in {None, "", "Braunstone Frith Primary Academy"}:
+            patch["school_name"] = DEFAULT_SETTINGS["school_name"]
+        if patch:
+            patch["updated_at"] = utcnow_iso()
+            await db[C.settings].update_one({"id": "global"}, {"$set": patch})
 
     await db[C.seed_meta].update_one(
         {"id": "seed"},
